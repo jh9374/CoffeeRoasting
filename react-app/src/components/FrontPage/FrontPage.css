@@ -1,0 +1,13 @@
+.frontpage__banner{
+    /* background-image: url("../../images/Coffee.png");
+    background-size: cover; */
+    background-color:#fff;
+    height: 50em;
+}
+
+.frontpage__text{
+    position: absolute;
+    top: 7em;
+    left: 3em;
+    font-size: 2em;
+}

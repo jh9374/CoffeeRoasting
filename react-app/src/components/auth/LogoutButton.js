@@ -2,6 +2,7 @@ import React from "react";
 import { logout } from "../../services/auth";
 import { useDispatch } from "react-redux";
 import { removeSessionUser } from "../../store/reducers/session"
+import { NavLink } from "react-router-dom";
 
 const LogoutButton = ({setAuthenticated}) => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const LogoutButton = ({setAuthenticated}) => {
     setAuthenticated(false);
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <NavLink to="#" onClick={onLogout}>Logout</NavLink>;
 };
 
 export default LogoutButton;

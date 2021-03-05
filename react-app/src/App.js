@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // Components
+import FrontPage from "./components/FrontPage/FrontPage"
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar.js";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import User from "./components/User";
 import { setSessionUser } from "./store/reducers/session";
@@ -52,9 +53,9 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path="/" exact={true} >
+          <FrontPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
