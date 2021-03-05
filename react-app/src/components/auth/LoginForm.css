@@ -1,0 +1,51 @@
+.form-login, .form-signup{
+    width: 15em;
+    border-radius: .5em;
+    margin: 0 auto;
+    background-color: black;
+    height: fit-content;
+    color: #fff;
+    display: block;
+    font-size: 2em;
+}
+
+.form-login div, .form-signup div {
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    margin: .5em auto;
+    padding: .5em 0;
+    justify-content: space-between;
+}
+
+.form-login__heading h2, .form-signup__heading h2{
+    margin: 0 auto;
+}
+
+.form-login__errors{
+    font-size: .7em;
+    margin: 0;
+    padding: 0;
+    color: #a80000;
+    font-weight: bold;
+}
+.form-login__input input, .form-signup__input input{
+    padding: 1em 1em;
+    width: 50%;
+    justify-self: flex-end;
+}
+
+.form-login__submit button, .form-signup__submit button{
+    width: fit-content;
+    font-size: .9em;
+    margin: 0 auto;
+}
+
+.form-login__signup, .form-signup__login{
+    font-size: .7em;
+}
+
+.form-login__signup a, .form-signup__login a{
+    color: #fff;
+    margin-left: .5em;
+}

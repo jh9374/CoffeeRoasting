@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+
+import "./SignUpForm.css"
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -35,12 +38,15 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to={`/products`} />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form className="form-signup" onSubmit={onSignUp}>
+      <div className="form-signup__heading">
+        <h2>Sign Up</h2>
+      </div>
+      <div className="form-signup__input">
         <label>User Name</label>
         <input
           type="text"
@@ -49,7 +55,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={username}
         ></input>
       </div>
-      <div>
+      <div className="form-signup__input">
         <label>Email</label>
         <input
           type="text"
@@ -58,7 +64,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className="form-signup__input">
         <label>Password</label>
         <input
           type="password"
@@ -67,7 +73,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className="form-signup__input">
         <label>Repeat Password</label>
         <input
           type="password"
@@ -77,7 +83,13 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <div className="form-signup__submit">
+        <button type="submit">Sign Up</button>
+      </div>
+      <div className="form-signup__login" style={{justifyContent:"center"}}>
+        Already have an account?
+          <NavLink to="/login">Login</NavLink>
+      </div>
     </form>
   );
 };
