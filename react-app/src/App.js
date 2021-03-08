@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 
 // Services
 import { authenticate } from "./services/auth";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 function App() {
 
@@ -24,7 +25,6 @@ function App() {
   useEffect(() => {
     (async() => {
       const user = await authenticate();
-      console.log(user)
       if (!user.errors) {
         setAuthenticated(true);
         dispatch(setSessionUser(user));
@@ -50,8 +50,8 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
+        <ProtectedRoute path="/profile/:userId" exact={true} authenticated={authenticated}>
+          <ProfilePage />
         </ProtectedRoute>
         <Route path="/" exact={true} >
           <FrontPage />
