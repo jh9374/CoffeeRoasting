@@ -1,23 +1,32 @@
 import React, { useState } from "react";
-import { NavLink, Redirect } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import { setSessionUser } from "../../store/reducers/session";
 
 import "./SignUpForm.css"
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+    setErrors([]);
+    const user = await signUp(username, email, password, repeatPassword);
+    if (!user.errors) {
+      setAuthenticated(true);
+      dispatch(setSessionUser(user))
+      history.push(`/profile/${user.id}`)
+    } else{
+      setErrors(user.errors)
     }
   };
 
@@ -45,6 +54,11 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     <form className="form-signup" onSubmit={onSignUp}>
       <div className="form-signup__heading">
         <h2>Sign Up</h2>
+      </div>
+      <div style={errors.length > 0 ? { display: "block" } : { display: "none" }}>
+        {errors.map((error) => (
+          <div key={error} className="form-login__errors" style={{ margin: "auto", padding: "0" }}>{error}</div>
+        ))}
       </div>
       <div className="form-signup__input">
         <label>User Name</label>

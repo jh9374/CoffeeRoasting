@@ -15,6 +15,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const user = await login(email, password);
     if (!user.errors) {
       setAuthenticated(true);

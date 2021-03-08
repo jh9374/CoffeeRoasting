@@ -12,7 +12,7 @@ const LogoutButton = ({setAuthenticated}) => {
     setAuthenticated(false);
   };
 
-  return <NavLink to="#" onClick={onLogout}>Logout</NavLink>;
+  return <NavLink to="/" onClick={onLogout}>Logout</NavLink>;
 };
 
 export default LogoutButton;

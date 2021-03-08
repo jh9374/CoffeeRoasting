@@ -9,6 +9,21 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
+  profile_image_url = db.Column(db.String, nullable=True)
+  bio = db.Column(db.Text, nullable=True)
+  street_address = db.Column(db.String, nullable=True)
+  city = db.Column(db.String, nullable=True)
+  state = db.Column(db.String, nullable=True)
+  zipcode = db.Column(db.String, nullable=True)
+  created_at = db.Column(db.DateTime, server_default=db.func.now())
+  updated_at = db.Column(db.DateTime, server_default=db.func.now())
+
+  # associations
+  roasters = db.relationship("Roaster", back_populates="users", cascade="all, delete-orphan")
+  images = db.relationship("Image", back_populates="users", cascade="all, delete-orphan")
+  likes = db.relationship("Like", back_populates="users", cascade="all, delete-orphan")
+  orders = db.relationship("Order", back_populates="users", cascade="all, delete-orphan")
+  reviews = db.relationship("Review", back_populates="users", cascade="all, delete-orphan")
 
 
   @property
@@ -29,5 +44,13 @@ class User(db.Model, UserMixin):
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email
+      "email": self.email,
+      "profile_image_url":self.profile_image_url,
+      "bio":self.bio,
+      "street_address":self.street_address,
+      "city":self.city,
+      "state":self.state,
+      "zipcode":self.zipcode,
+      "created_at": self.created_at,
+      "udpated_at": self.updated_at
     }
