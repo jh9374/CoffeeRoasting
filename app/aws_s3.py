@@ -11,13 +11,12 @@ s3 = boto3.client(
 
 
 def upload_file_to_s3(file, bucket_name, acl="public-read"):
-
     try:
 
         s3.upload_fileobj(
             file,
             bucket_name,
-            file.filename,
+            file.name,
             ExtraArgs={
                 "ACL": acl,
                 "ContentType": file.content_type
@@ -29,4 +28,4 @@ def upload_file_to_s3(file, bucket_name, acl="public-read"):
         print("Something Happened: ", e)
         return e
 
-    return f"{Config.S3_LOCATION}{file.filename}"
+    return f"{Config.S3_LOCATION}{file.name}"

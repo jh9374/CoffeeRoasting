@@ -16,3 +16,9 @@
     background-color: rgb(165, 165, 170);
     cursor: pointer;
 }
+
+/* Image */
+.profile__image img{
+    width: 12em;
+    /* border-radius: 50%; */
+}

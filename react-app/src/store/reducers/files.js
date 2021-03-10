@@ -1,22 +1,46 @@
+// Action Constants
+    const CREATE_PROFILE = "profile/createProfile";
+    const UPDATE_PROFILE = "profile/updateProfile";
+
+// Action Creators
+
+const createProfileAction = (payload) => ({
+    type: CREATE_PROFILE,
+    payload
+});
+
+const updateProfileAction = (payload) => ({
+    type: UPDATE_PROFILE,
+    payload
+});
+
+// State Template
+// const profile
 
 // Thunks
-export const uploadFile = (fileForm) => async (dispatch) => {
+export const updateProfile = (profileForm) => async (dispatch) => {
     const {
-        user_id,
-        /* all,
-           other,
-           form,
-           fields, */
-        file // this is the file for uploading
-    } = fileForm;
-
+        id,
+        file,
+        bio,
+        street,
+        city,
+        usState,
+        zipcode
+    } = profileForm;
+    
     const form = new FormData()
-    form.append('user_id', user_id)
-    // repeat as necessary for each required form field
+    
     form.append('file', file)
+    form.append('bio', bio)
+    form.append('street_address', street)
+    form.append('city', city)
+    form.append('state', usState)
+    form.append('zipcode', zipcode)
 
-    const res = await fetch('/api/<your_api_route>', {
-        method: "POST",
-        body: form
+    const res = await fetch(`/api/profile/${id}`, {
+        method: "PATCH",
+        body: form,
     })
+    return await res;
 }

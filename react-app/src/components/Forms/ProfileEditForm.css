@@ -1,0 +1,20 @@
+.profile-form__container{
+    width: 40%;
+    height: 80%;
+    position: fixed;
+    display: block;
+    top: 30%;
+    left: 30%;
+    justify-content: center;
+}
+
+.profile__form--close{
+    width: 3em;
+    height: 3em;
+    display: block;
+}
+
+.profile__form{
+    border: 1px solid black;
+    border-radius: 1em;
+}
