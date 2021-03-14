@@ -8,6 +8,7 @@
 
 .navbar__nav{
     width: 90%;
+    height: 3em;
     display: flex;
     margin: auto;
     justify-content:space-between;
@@ -49,7 +50,8 @@
 }
 
 .home__image{
-    width: 3em;
+    max-width: 3em;
+    max-height: 3em;
 }
 
 .cart__count{

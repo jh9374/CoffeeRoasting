@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 // Services
 import { authenticate } from "./services/auth";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 function App() {
 
@@ -50,11 +51,14 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <ProtectedRoute path="/profile/:userId" exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/profile/:username" exact={true} authenticated={authenticated}>
           <ProfilePage />
         </ProtectedRoute>
         <Route path="/" exact={true} >
           <FrontPage />
+        </Route>
+        <Route path="/products" exact={true} >
+          <ProductPage/>
         </Route>
       </Switch>
     </BrowserRouter>

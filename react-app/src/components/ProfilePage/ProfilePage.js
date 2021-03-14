@@ -1,16 +1,39 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 import EmptyProfilePic from "../../images/EmptyProfile.png"
 import ProfileEditForm from "../Forms/ProfileEditForm";
+import { getUserProfile } from "../../services/profile"
 
 // Style
 import "./ProfilePage.css"
+import { useParams } from "react-router-dom";
 
 function ProfilePage(){
+    const {username} = useParams();
     const user = useSelector((x) => x.session.user)
-
+    // const res = getUserProfile(username);
+    // console.log(res)
     const [editImage, setEditImage] = useState(false);
+    const [profile, setProfile] = useState();
 
+    useEffect ( () => {
+    console.log(username, "use effect");
+    const u = async () => {
+        setProfile(await userProfile(username))
+    }
+    
+    // const res = await userProfile();
+    // console.log(res)
+    // const res = userProfile;
+    // setProfile(res)
+    
+    }, [])
+    console.log(profile);
+
+    async function userProfile (){
+        const res = await getUserProfile(username);
+        return res;
+    }
 
     return (
         <>
@@ -42,9 +65,9 @@ function ProfilePage(){
         </div>
         <div className="user__likes">
             <h2>User Likes</h2>
-                <div className="like__card">
-                    <h3>Like</h3>
-                </div>
+            <div className="like__card">
+                <h3>Like</h3>
+            </div>
         </div>
         </>
     )

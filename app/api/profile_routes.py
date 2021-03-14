@@ -13,24 +13,16 @@ from app.aws_s3 import upload_file_to_s3
 profile_routes = Blueprint("profile", __name__)
 
 
-# UPDATE PROFILE FOR LOGGED IN USER
+# UPDATE PROFILE PIC FOR LOGGED IN USER
 @profile_routes.route("/<int:id>", methods=['PATCH'])
 @login_required
-def update_profile(id):
+def update_profile_pic(id):
     # Get user from session
-    # user = current_user
-    # print(user)
-    # Prepare form data for validation
-    # form = ProfileForm()
     
     # form['csrf_token'].data = request.cookies['csrf_token']
-    print("form**********",request.form)
-    print("file*********", request.files)
     # {bio} = request.form
-    # print(bio)
     # find user by id
     user = User.query.get(id)
-    print("-------------",user.to_dict())
     # check form validity and return errors if not valid
     
     
@@ -43,11 +35,24 @@ def update_profile(id):
 
     # checking if file was uploaded
     file = request.files["file"]
-    print("FILE", file)
     if file:
         file_url = upload_file_to_s3(file, Config.S3_BUCKET)
-        print("file_url",file_url)
         user.profile_image_url = file_url
    
     db.session.commit()
+    return user.to_dict()
+
+# UPDATE PROFILE FOR LOGGED IN USER
+@profile_routes.route("/<username>")
+@login_required
+def get_profile(username):
+    # Get user from session
+    
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # {bio} = request.form
+    # find user by id
+    
+    user = User.query.filter(User.username == username).first()
+    # check form validity and return errors if not valid
+    
     return user.to_dict()
