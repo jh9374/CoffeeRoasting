@@ -44,3 +44,41 @@ footer{
     justify-content: space-evenly;
     height: 10vh;
 }
+
+.search__form{
+    display: flex;
+}
+
+.search__form>div{
+    margin: auto .5em;
+}
+
+.search__form input{
+    width: 25em;
+    height: 3em;
+    border-radius: 2em;
+    padding: 0 1em;
+}
+.search__wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50vw;
+    background-color: rgba(255, 255, 255, .5);
+    margin: 0 auto;
+    font-size: 2.5em;
+    border-radius: 50px;
+}
+
+.search__button{
+    background: url(../../images/search_icon.001.jpeg);
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-color: rgb(175, 86, 37);
+    background-position: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: sans-serif;
+    width: 1.5em;
+    height: 1.5em;
+}
