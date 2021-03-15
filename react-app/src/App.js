@@ -7,7 +7,6 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar.js";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import User from "./components/User";
 import { setSessionUser } from "./store/reducers/session";
 import { useDispatch } from "react-redux";
 
@@ -51,9 +50,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <ProtectedRoute path="/profile/:username" exact={true} authenticated={authenticated}>
+        <Route path="/profile/:username" exact={true}>
           <ProfilePage />
-        </ProtectedRoute>
+        </Route>
         <Route path="/" exact={true} >
           <FrontPage />
         </Route>

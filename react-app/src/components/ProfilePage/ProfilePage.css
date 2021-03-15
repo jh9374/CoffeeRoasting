@@ -20,5 +20,16 @@
 /* Image */
 .profile__image img{
     width: 12em;
-    /* border-radius: 50%; */
+    background-color: #e0e0e0;
+    border-radius: 50%;
+}
+
+.user__profile>div{
+    margin: 1em auto;
+    width: fit-content;
+}
+
+.user__reviews>div, .user__likes>div{
+    display: flex;
+    justify-content: space-evenly;
 }

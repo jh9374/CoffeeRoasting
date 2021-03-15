@@ -3,18 +3,27 @@
     height: 80%;
     position: fixed;
     display: block;
-    top: 30%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
     justify-content: center;
-}
-
-.profile__form--close{
-    width: 3em;
-    height: 3em;
-    display: block;
 }
 
 .profile__form{
     border: 1px solid black;
     border-radius: 1em;
+    background-color: rgb(180, 180, 180);
+}
+
+.profile__form div {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Buttons */
+.profile__form--close{
+    width: 2em;
+    height: 2em;
+    float: right;
 }

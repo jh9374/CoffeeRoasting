@@ -14,7 +14,8 @@ import { AiFillCaretDown, AiFillCaretUp} from "react-icons/ai"
 
 const NavBar = ({ setAuthenticated }) => {
   const user = useSelector((x) => x.session.user);
-  const [showCart, setShowCart] = useState(false);
+  const [onCartLabel, setOnCartLabel] = useState(false);
+  const [onCartDiv, setOnCartDiv] = useState(false);
   return (
     <div className="navbar">
       <nav className="navbar__nav">
@@ -47,21 +48,27 @@ const NavBar = ({ setAuthenticated }) => {
                 Profile
             </NavLink>
           <NavLink to="/cart" exact={true} activeClassName="active"
-                  onMouseEnter={() => { setShowCart(true) }}
+                  onMouseEnter={() => { setOnCartLabel(true)}}
+                  onMouseLeave={() => { setTimeout(()=>{
+                    setOnCartLabel(false)
+                  },100)}}
                   >
                   Cart
                   <span className="cart__count">0</span>
                   <span className="cart__caretdown"
                   
-                  style={!showCart ? {visibility:"visible"} : {visibility:"hidden"}}
+                    style={(!onCartLabel && !onCartDiv) ? {visibility:"visible"} : {visibility:"hidden"}}
                   ><AiFillCaretDown/></span>
                   <span className="cart__caretup"
-                    style={showCart ? { visibility: "visible" } : { visibility: "hidden" }}>
+                    style={(onCartLabel || onCartDiv) ? { visibility: "visible" } : { visibility: "hidden" }}>
                       <AiFillCaretUp /></span>
-                  {showCart && (
+
+                  { (onCartDiv || onCartLabel) && 
+                    
+                  (
                     <div className="cart__dropdown"
-                      onMouseEnter={() => { setShowCart(true) }}
-                      onMouseLeave={() => { setShowCart(false) }}>
+                      onMouseEnter={() => { setOnCartDiv(true)  }}
+                      onMouseLeave={() => { setOnCartDiv(false)  }}>
                       Cart Items
                       <div className="cart__items">
                         <ul>

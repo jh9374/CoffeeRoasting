@@ -1,5 +1,6 @@
 import boto3
 import botocore
+import datetime
 from .config import Config
 
 
@@ -9,14 +10,17 @@ s3 = boto3.client(
     aws_secret_access_key=Config.S3_SECRET
 )
 
+date = datetime.datetime.now()
 
 def upload_file_to_s3(file, bucket_name, acl="public-read"):
+    date = datetime.datetime.now()
+    key = date.strftime("%f")
     try:
 
         s3.upload_fileobj(
             file,
             bucket_name,
-            file.name,
+            Key=key,
             ExtraArgs={
                 "ACL": acl,
                 "ContentType": file.content_type
@@ -28,4 +32,4 @@ def upload_file_to_s3(file, bucket_name, acl="public-read"):
         print("Something Happened: ", e)
         return e
 
-    return f"{Config.S3_LOCATION}{file.name}"
+    return f"{Config.S3_LOCATION}{key}"

@@ -18,12 +18,17 @@ const removeSessionUserAction = (payload) => ({
 const userTemplate = {
     id: null,
     username: null,
-    email: null
+    email: null,
+    bio: null,
+    street_address: null,
+    city: null,
+    state: null,
+    zipcode: null
 };
 
 // Thunks
-export const setSessionUser = ({id, username, email}) => async (dispatch) => {
-    dispatch(setSessionUserAction({id, username, email}));
+export const setSessionUser = ({id, username, email, bio, street_address, city, state, zipcode}) => async (dispatch) => {
+    dispatch(setSessionUserAction({id, username, email, bio, street_address, city, state, zipcode}));
     return;
 };
 

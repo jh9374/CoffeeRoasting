@@ -115,7 +115,7 @@ states_dict = {
 def zipcode_validator(form, field):
     print("Checking zipcode validitiy")
     zipcode = field.data
-    print("zipcode", zipcode)
+
     if zipcode is not None:
         if len(zipcode) != 5:
             raise ValidationError("Zipcode must be 5 digits")
@@ -126,7 +126,7 @@ def zipcode_validator(form, field):
 def state_validator(form, field):
     print("Checking state validity")
     state = field.data
-    print("state select",state)
+
     if state is not None:
         if state not in states_dict:
             raise ValidationError("State is not valid")
