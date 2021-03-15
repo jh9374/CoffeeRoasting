@@ -1,13 +1,46 @@
 .frontpage__banner{
-    /* background-image: url("../../images/Coffee.png");
-    background-size: cover; */
+    background-image: url("../../images/Coffee.png");
+    background-size: cover;
     background-color:#fff;
     height: 50em;
 }
 
-.frontpage__text{
+/* .frontpage__text{
     position: absolute;
     top: 7em;
     left: 3em;
     font-size: 2em;
+} */
+.frontpage__text{
+    padding: 1em;
+    text-align: center;
+    font-size: 5em;
+    color: #fff;
+}
+
+.frontpage__images{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.frontpage__images img{
+    width: 8em;
+    margin: 1em 4em;
+}
+
+.toast__image{
+    transform: rotate(20deg);
+}
+.roast__image{
+    transform: rotate(-30deg);
+}
+
+footer{
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    height: 10vh;
 }
