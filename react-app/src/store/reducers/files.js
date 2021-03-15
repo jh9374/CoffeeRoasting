@@ -41,5 +41,5 @@ export const updateProfile = (profileForm) => async (dispatch) => {
         method: "PATCH",
         body: form,
     })
-    return await res;
+    return res;
 }

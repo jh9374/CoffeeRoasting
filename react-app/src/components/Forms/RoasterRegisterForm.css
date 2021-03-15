@@ -1,0 +1,9 @@
+.roaster-register__input input {
+  margin: 0 1em;
+  height: 2em;
+}
+
+.roaster-register__button--close {
+  border: 2px solid #e0e0e0;
+  font-weight: normal;
+}

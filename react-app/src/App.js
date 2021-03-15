@@ -63,6 +63,9 @@ function App() {
         <Route path="/products" exact={true} >
           <ProductPage/>
         </Route>
+        <Route path="/404" exact={true}>
+          <h2>Not Found</h2>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

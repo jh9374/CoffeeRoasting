@@ -7,13 +7,16 @@ import { getUserProfile } from "../../services/profile"
 // Style
 import "./ProfilePage.css"
 import { useHistory, useParams } from "react-router-dom";
+import RoasterRegisterForm from "../Forms/RoasterRegisterForm";
 
 function ProfilePage() {
     const history = useHistory();
     const { username } = useParams();
     const user = useSelector((x) => x.session.user)
+
     const [editImage, setEditImage] = useState(false);
     const [profile, setProfile] = useState();
+    const [register, setRegister] = useState(false);
 
     const fetchUserProfile = useCallback(async () => {
         const res = await getUserProfile(username)
@@ -28,9 +31,9 @@ function ProfilePage() {
         fetchUserProfile();
     }, [fetchUserProfile])
 
-    function register(e){
+    function openForm(e){
         e.preventDefault();
-        history.push("/roaster/register")
+        setRegister(!register);
     }
 
     if(profile){
@@ -106,10 +109,23 @@ function ProfilePage() {
                             <h3>Like</h3>
                         </div>
                     </div>
-                    <div>
-                        <button className="roaster-register__button"
-                        onClick={register}>Register as a Roaster?</button>
-                    </div>
+                    {
+                        !register ?
+                        (<div>
+                            <button className="roaster-register__button"
+                                onClick={openForm}>Register as a Roaster?</button>
+                        </div>)
+                        :
+                        (<div>
+                                <button className="roaster-register__button roaster-register__button--close"
+                                    onClick={openForm}>Nevermind</button>
+                            </div>)
+                    }
+                    
+                    {
+                        register &&
+                        <RoasterRegisterForm />
+                    }
                 </div>
                 
             </>
