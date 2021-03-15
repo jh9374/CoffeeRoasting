@@ -1,22 +1,44 @@
 
 
 /* Buttons */
-.profile__image button{
+.editProfile__button{
     background-color: #fff;
     background-image: url("../../images/Edit.png");
     background-size: 50%;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 20%;
-    width: 4em;
+    border-radius: 40%;
+    width: 3em;
     height: 3em;
+    position: absolute;
+    top: 15em;
+    left: 80em;
 }
 
-.profile__image button:hover{
+.editProfile__button:hover{
     background-color: rgb(165, 165, 170);
     cursor: pointer;
 }
 
+.roaster-register__button{
+    border: 4px solid #e0e0e0;
+    border-radius: 2em;
+    background-color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(63, 66, 240);
+}
+.roaster-register__button:hover{
+    border: 4px solid #e0e0e0;
+    border-radius: 2em;
+    background-color: rgb(160, 150, 150);
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+}
+.roaster-register__button:focus{
+    outline-style: none;
+}
 /* Image */
 .profile__image img{
     width: 12em;
@@ -24,12 +46,40 @@
     border-radius: 50%;
 }
 
+/* Layout */
+
 .user__profile>div{
     margin: 1em auto;
     width: fit-content;
+    margin: .5em auto;
+    padding: 1em;
+    /* border: 1px solid #000; */
+    /* border-radius: 2em; */
 }
 
 .user__reviews>div, .user__likes>div{
     display: flex;
     justify-content: space-evenly;
+}
+
+.profile__bio{
+    display: flex;
+    justify-content: space-between;
+    width: fit-content
+}
+
+.profile__bio p{
+    /* text-align: center; */
+    margin-left: .2em;
+
+}
+
+.shippingInfo__container h2{
+    margin: 1em auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.shippingInfo__container *{
+    margin: .5em auto;
 }

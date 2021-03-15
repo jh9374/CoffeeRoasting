@@ -28,6 +28,11 @@ function ProfilePage() {
         fetchUserProfile();
     }, [fetchUserProfile])
 
+    function register(e){
+        e.preventDefault();
+        history.push("/roaster/register")
+    }
+
     if(profile){
         return (
             <>
@@ -39,25 +44,36 @@ function ProfilePage() {
                         <img src={profile.profile_image_url ? profile.profile_image_url : EmptyProfilePic} alt="default profile pic"></img>
                         {
                             user.id === profile.id &&
-                            <button type="button" onClick={() => setEditImage(true)}></button>
+                            <div>
+                                <button className="editProfile__button" type="button" onClick={() => setEditImage(true)}></button>
+                            </div>
+
                         }
                     </div>
+                    
                     {editImage &&
                         (
-                            <ProfileEditForm setEditImage={setEditImage} />
+                            <ProfileEditForm fetchUserProfile={fetchUserProfile} editImage={editImage} setEditImage={setEditImage} />
                         )
 
                     }
 
                     <div className="profile__bio">
-                        <h2>Bio</h2>
+                        <h2>Bio:</h2>
                         <p>{profile.bio}</p>
                     </div>
                     {
                         user.id === profile.id && (
-                            <div>
+                            <div className="shippingInfo__container">
                                 <h2>Shipping Info</h2>
+                                <div>
+                                    {user.street_address}
+                                </div>
+                                <div>
+                                    {user.city} {user.state}, {user.zipcode}
+                                    </div>
                             </div>
+                            
                         )
                     }
                     <div className="user__reviews">
@@ -89,6 +105,10 @@ function ProfilePage() {
                         <div className="like__card">
                             <h3>Like</h3>
                         </div>
+                    </div>
+                    <div>
+                        <button className="roaster-register__button"
+                        onClick={register}>Register as a Roaster?</button>
                     </div>
                 </div>
                 

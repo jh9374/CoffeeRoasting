@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./ProfileEditForm.css"
 import {updateProfile} from "../../store/reducers/files"
 
-function ProfileEditForm({setEditImage}){
+function ProfileEditForm({ fetchUserProfile, editImage, setEditImage}){
 
     const dispatch = useDispatch();
 
@@ -33,20 +33,24 @@ function ProfileEditForm({setEditImage}){
             zipcode
         }
 
-        const res = dispatch(updateProfile(profileForm));
-        if (res.errors){
-            let arr = []
-            errors.forEach( (e, i) => {
-                arr[i] = e;
-            });
-            setErrors(arr);
-        };
-        setFile("")
-        setBio("")
-        setStreet("")
-        setCity("")
-        setUSState("")
-        setZipcode("")
+        const res = dispatch(updateProfile(profileForm)).then(() => {
+            if (res.errors) {
+                let arr = []
+                errors.forEach((e, i) => {
+                    arr[i] = e;
+                });
+                setErrors(arr);
+            };
+            setFile("")
+            setBio("")
+            setStreet("")
+            setCity("")
+            setUSState("")
+            setZipcode("")
+            setEditImage(false)
+            fetchUserProfile();
+        })
+        
     }
 
     const updateImage = (e) => {
