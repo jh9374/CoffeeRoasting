@@ -11,7 +11,7 @@ product_routes = Blueprint("product", __name__)
 
 # ****************************** Create Product ********************************
 
-@product_routes.route("/", methods=["POST"])
+@product_routes.route("", methods=["POST"])
 @login_required
 def create_product():
 
@@ -94,11 +94,11 @@ def handle_product(id):
 
 # ****************************** Get All Products **********************************
 
-@product_routes.route("/")
+@product_routes.route("")
 def get_products():
 
     query_results = Product.query.all()
     products = {}
-    for prod in query_results:
-        products[prod.id] = prod.to_dict()
+    for num, prod in enumerate(query_results, start=1):
+        products[num] = prod.to_dict()
     return products, 200
