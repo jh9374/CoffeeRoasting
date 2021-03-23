@@ -23,7 +23,8 @@ const userTemplate = {
     street_address: null,
     city: null,
     state: null,
-    zipcode: null
+    zipcode: null,
+    roaster: false
 };
 
 // Thunks

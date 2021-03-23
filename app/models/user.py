@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
   city = db.Column(db.String, nullable=True)
   state = db.Column(db.String, nullable=True)
   zipcode = db.Column(db.String, nullable=True)
+  # roaster = db.Column(db.Boolean, default=False, nullable=False)
   created_at = db.Column(db.DateTime, server_default=db.func.now())
   updated_at = db.Column(db.DateTime, server_default=db.func.now())
 
@@ -51,6 +52,7 @@ class User(db.Model, UserMixin):
       "city":self.city,
       "state":self.state,
       "zipcode":self.zipcode,
+      # "roaster":self.roaster,
       "created_at": self.created_at,
       "udpated_at": self.updated_at
     }

@@ -9,8 +9,9 @@
   width: 3em;
   height: 3em;
   position: absolute;
-  top: 15em;
-  left: 80em;
+  top: 40vh;
+  left: 56vw;
+  translate: 40vh 56vw;
 }
 
 .editProfile__button:hover {

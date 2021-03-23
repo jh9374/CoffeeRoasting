@@ -11,7 +11,7 @@ class Product(db.Model):
     sweetness = db.Column(db.Integer, nullable = False)
     acidity = db.Column(db.Integer, nullable = False)
     mouthfeel = db.Column(db.Integer, nullable = False)
-    flavour = db.Column(db.ARRAY(db.String), nullable = False)
+    flavour = db.Column(db.ARRAY(db.String, dimensions=1), nullable = False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now())
 

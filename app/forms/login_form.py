@@ -4,12 +4,12 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 
-# def user_exists(form, field):
-#     print("Checking if user exists", field.data)
-#     email = field.data
-#     user = User.query.filter(User.email == email).first()
-#     if not user:
-#         raise ValidationError("Email provided not found.")
+def user_exists(form, field):
+    print("Checking if user exists", field.data)
+    email = field.data
+    user = User.query.filter(User.email == email).first()
+    if not user:
+        raise ValidationError("Email provided was not found, please sign up")
 
 
 def password_matches(form, field):
@@ -17,11 +17,11 @@ def password_matches(form, field):
     password = field.data
     email = form.data['email']
     user = User.query.filter(User.email == email).first()
-    if not user or not user.check_password(password):
+    if user and not user.check_password(password):
         raise ValidationError("Credentials entered are incorrect")
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[
                            DataRequired(), password_matches])

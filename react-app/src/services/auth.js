@@ -1,3 +1,9 @@
+
+
+
+
+// ****************************** Authenticate *********************************
+
 export const authenticate = async() => {
   const response = await fetch('/api/auth/',{
     headers: {
@@ -6,6 +12,9 @@ export const authenticate = async() => {
   });
   return await response.json();
 }
+
+
+// ****************************** Login ****************************************
 
 export const login = async (email, password) => {
   const response = await fetch('/api/auth/login', {
@@ -21,6 +30,9 @@ export const login = async (email, password) => {
   return await response.json();
 }
 
+
+// ****************************** Logout ***************************************
+
 export const logout = async () => {
   const response = await fetch("/api/auth/logout", {
     headers: {
@@ -30,6 +42,8 @@ export const logout = async () => {
   return await response.json();
 };
 
+
+// ****************************** Sign Up **************************************
 
 export const signUp = async (username, email, password, repeatPassword) => {
   const response = await fetch("/api/auth/signup", {

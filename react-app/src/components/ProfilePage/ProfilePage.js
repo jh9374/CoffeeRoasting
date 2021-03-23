@@ -15,33 +15,37 @@ function ProfilePage() {
     const user = useSelector((x) => x.session.user)
 
     const [editImage, setEditImage] = useState(false);
-    const [profile, setProfile] = useState();
+    const [isLoading, setIsLoading] = useState(true)
+    const [profile, setProfile] = useState({});
     const [register, setRegister] = useState(false);
 
     const fetchUserProfile = useCallback(async () => {
         const res = await getUserProfile(username)
-        if (!res.errors) {
-            setProfile(res)
-        } else {
-            history.push("/404")
-        }
-    }, [username, history])
+                if (!res.errors) {
+                    setProfile(res)
+                    setIsLoading(false)
+                } else {
+                    history.push("/404")
+                }
+            
+    }, [ history])
 
     useEffect(() => {
+        setIsLoading(true)
         fetchUserProfile();
-    }, [fetchUserProfile])
+    }, [editImage])
 
-    function openForm(e){
+    function openForm(e) {
         e.preventDefault();
         setRegister(!register);
     }
 
-    if(profile){
+    if (!isLoading) {
         return (
             <>
                 <div className="user__profile">
                     <div className="profile__heading">
-                        <h1>{profile.username}</h1>
+                        <h1>{profile.username}{profile.id}{user.id}</h1>
                     </div>
                     <div className="profile__image">
                         <img src={profile.profile_image_url ? profile.profile_image_url : EmptyProfilePic} alt="default profile pic"></img>
@@ -53,7 +57,7 @@ function ProfilePage() {
 
                         }
                     </div>
-                    
+
                     {editImage &&
                         (
                             <ProfileEditForm fetchUserProfile={fetchUserProfile} editImage={editImage} setEditImage={setEditImage} />
@@ -70,13 +74,13 @@ function ProfilePage() {
                             <div className="shippingInfo__container">
                                 <h2>Shipping Info</h2>
                                 <div>
-                                    {user.street_address}
+                                    {profile.street_address}
                                 </div>
                                 <div>
-                                    {user.city} {user.state}, {user.zipcode}
-                                    </div>
+                                    {profile.city} {profile.state}, {profile.zipcode}
+                                </div>
                             </div>
-                            
+
                         )
                     }
                     <div className="user__reviews">
@@ -111,29 +115,29 @@ function ProfilePage() {
                     </div>
                     {
                         !register ?
-                        (<div>
-                            <button className="roaster-register__button"
-                                onClick={openForm}>Register as a Roaster?</button>
-                        </div>)
-                        :
-                        (<div>
+                            (<div>
+                                <button className="roaster-register__button"
+                                    onClick={openForm}>Register as a Roaster?</button>
+                            </div>)
+                            :
+                            (<div>
                                 <button className="roaster-register__button roaster-register__button--close"
                                     onClick={openForm}>Nevermind</button>
                             </div>)
                     }
-                    
+
                     {
                         register &&
                         <RoasterRegisterForm />
                     }
                 </div>
-                
+
             </>
         )
-    }else{
+    } else {
         return (<div>Loading</div>)
     }
-    
+
 }
 
 export default ProfilePage;

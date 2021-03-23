@@ -1,0 +1,14 @@
+.profile__card, .products__section{
+    display: flex;
+    margin: 1em auto;
+    width: 20em;
+}
+
+.profile__card *{
+    margin: 0 auto;
+
+}
+
+.products__section *{
+    margin: 0 auto;
+}

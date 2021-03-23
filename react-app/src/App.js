@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import { authenticate } from "./services/auth";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import ProductPage from "./components/ProductPage/ProductPage";
-import RoasterRegisterForm from "./components/Forms/RoasterRegisterForm";
+import RoasterProfilePage from "./components/RoasterProfilePage/RoasterProfilePage";
 
 function App() {
 
@@ -54,9 +54,9 @@ function App() {
         <Route path="/profile/:username" exact={true}>
           <ProfilePage />
         </Route>
-        <ProtectedRoute path="/roaster/register" authenticated={authenticated}>
-          <RoasterRegisterForm />
-        </ProtectedRoute>
+        <Route path="/roaster/:name" >
+          <RoasterProfilePage />
+        </Route>
         <Route path="/" exact={true} >
           <FrontPage />
         </Route>

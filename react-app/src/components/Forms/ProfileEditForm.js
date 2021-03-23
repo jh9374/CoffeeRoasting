@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import "./ProfileEditForm.css"
-import {updateProfile} from "../../store/reducers/files"
+import {updateProfile} from "../../services/profile"
 
 function ProfileEditForm({ fetchUserProfile, editImage, setEditImage}){
 
@@ -41,6 +41,8 @@ function ProfileEditForm({ fetchUserProfile, editImage, setEditImage}){
                 });
                 setErrors(arr);
             };
+        })
+        .then(() => {
             setFile("")
             setBio("")
             setStreet("")
@@ -48,9 +50,8 @@ function ProfileEditForm({ fetchUserProfile, editImage, setEditImage}){
             setUSState("")
             setZipcode("")
             setEditImage(false)
-            fetchUserProfile();
+            
         })
-        
     }
 
     const updateImage = (e) => {

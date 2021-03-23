@@ -136,5 +136,5 @@ class ProfileForm(FlaskForm):
     bio = TextAreaField('Bio')
     street_address = StringField('Street Address')
     city = StringField('City')
-    state = SelectField('State', choices=states_list, validators=[state_validator])
+    state = SelectField('State', choices=states_list)
     zipcode = StringField('Zipcode', validators=[zipcode_validator])
