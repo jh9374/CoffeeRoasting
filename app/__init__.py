@@ -12,6 +12,8 @@ from .api.profile_routes import profile_routes
 from .api.roaster_routes import roaster_routes
 from .api.product_routes import product_routes
 from .api.review_routes import review_routes
+from .api.order_routes import order_routes
+from .api.image_routes import image_routes
 
 from .seeds import seed_commands
 
@@ -39,6 +41,8 @@ app.register_blueprint(profile_routes, url_prefix='/api/profiles')
 app.register_blueprint(roaster_routes, url_prefix='/api/roasters')
 app.register_blueprint(product_routes, url_prefix='/api/products')
 app.register_blueprint(review_routes, url_prefix='/api')
+app.register_blueprint(order_routes, url_prefix='/api')
+app.register_blueprint(image_routes, url_prefix='/api')
 db.init_app(app)
 Migrate(app, db)
 

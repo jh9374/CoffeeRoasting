@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from app.models import db, Product, Roaster
 from app.forms import ProductForm
 from datetime import datetime
-import json
 
 from .auth_routes import validation_errors_to_error_messages
 
@@ -48,7 +47,7 @@ def create_product():
 
 # ****************************** Get, Update, Delete Product *******************
 
-@product_routes.route("/<int:id>", methods=["GET", "PATCH", "DELETE"])
+@product_routes.route("/<int:id>", methods=["PATCH", "DELETE"])
 @login_required
 def handle_product(id):
 
@@ -56,9 +55,6 @@ def handle_product(id):
 
     if product is None:
         return {"error": "product does not exist"}, 404
-
-    if request.method == "GET":
-        return product.to_dict()
 
     if request.method == "PATCH":
 
@@ -102,3 +98,17 @@ def get_products():
     for num, prod in enumerate(query_results, start=1):
         products[num] = prod.to_dict()
     return products, 200
+
+# ****************************** Get Single Product **********************************
+
+
+@product_routes.route("/<int:id>")
+def get_product(id):
+
+    product = Product.query.filter(Product.id == id).first()
+
+    if product is not None:
+        if request.method == "GET":
+            return product.to_dict(), 200
+
+    return {"error": "product does not exist"}, 404

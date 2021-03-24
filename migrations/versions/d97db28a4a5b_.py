@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 60efd92c9ae3
+Revision ID: d97db28a4a5b
 Revises: 
-Create Date: 2021-03-19 09:47:16.599122
+Create Date: 2021-03-23 20:56:42.341895
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '60efd92c9ae3'
+revision = 'd97db28a4a5b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -73,6 +73,7 @@ def upgrade():
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name'),
     sa.UniqueConstraint('user_id')
     )
     op.create_table('locations',
@@ -95,21 +96,19 @@ def upgrade():
     sa.Column('sweetness', sa.Integer(), nullable=False),
     sa.Column('acidity', sa.Integer(), nullable=False),
     sa.Column('mouthfeel', sa.Integer(), nullable=False),
-    sa.Column('flavour', sa.ARRAY(sa.String()), nullable=False),
+    sa.Column('flavour', sa.ARRAY(sa.String(), dimensions=1), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['roaster_id'], ['roasters.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('order_items',
-    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('order_id', sa.Integer(), nullable=False),
     sa.Column('product_id', sa.Integer(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('quantity', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
     sa.ForeignKeyConstraint(['product_id'], ['products.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('order_id', 'product_id')
     )
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
