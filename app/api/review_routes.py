@@ -57,7 +57,7 @@ def handle_review(id):
 
                 db.session.add(review)
                 db.session.commit()
-                return review.to_dict(), 201
+                return review.to_dict(), 200
 
             return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 

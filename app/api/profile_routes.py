@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request
 from flask_login import login_required, current_user
-from app.models import db, User
+from app.models import db, User, Review
 from app.forms import ProfileForm, check_file
 from datetime import datetime
 
@@ -62,11 +62,18 @@ def update_profile_pic(id):
 # ****************************** Get Profile ********************************
 
 # GET PROFILE FOR USER
-@profile_routes.route("/<username>")
-def get_profile(username):
+@profile_routes.route("/<int:id>")
+def get_profile(id):
     
-    user = User.query.filter(User.username == username).first()
+    user = User.query.filter(User.id == id).first()
+    reviews_query = Review.query.filter(Review.user_id == id).all()
 
+    reviews = {}
     if user:
-        return user.to_dict()
+        user = user.to_dict()
+        if reviews_query:
+            for num, r in enumerate(reviews_query, start=1):
+                reviews[num] = r.to_dict()
+            user.update({"reviews":reviews})
+        return user
     return {'errors': ["No such user"]}, 404

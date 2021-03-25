@@ -1,0 +1,42 @@
+.review__card{
+    margin: 1em;
+    display: block;
+    width: 40em;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: .5em;
+}
+
+.review__form textarea{
+    width: 98%;
+    margin: 0 auto;
+}
+
+.review__productName, .review__text{
+    margin: .5em auto;
+}
+
+.review-form-roast__image, .review-form-toast__image{
+    width: 2em;
+    height: 2em;
+    transform: none;
+}
+
+.roastRating__container{
+    display: flex;
+}
+
+.roastRating-input__container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.roastRating__input{
+    width: 100%;
+}
+
+datalist{
+    display: flex;
+    justify-content: space-between;
+    /* transform:rotate(80deg); */
+}

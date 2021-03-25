@@ -28,8 +28,8 @@ const userTemplate = {
 };
 
 // Thunks
-export const setSessionUser = ({id, username, email, bio, street_address, city, state, zipcode}) => async (dispatch) => {
-    dispatch(setSessionUserAction({id, username, email, bio, street_address, city, state, zipcode}));
+export const setSessionUser = ({id, username, email, bio, street_address, city, state, zipcode, roaster}) => async (dispatch) => {
+    dispatch(setSessionUserAction({id, username, email, bio, street_address, city, state, zipcode, roaster}));
     return;
 };
 

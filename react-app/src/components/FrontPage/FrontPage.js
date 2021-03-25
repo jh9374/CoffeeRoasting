@@ -7,14 +7,17 @@ import "./FrontPage.css"
 // Images
 import toast_color from "../../images/toast_color.png";
 import coffeeRoasting from "../../images/coffeeRoasting.png"
+import { useHistory } from "react-router-dom";
 
 function FrontPage() {
-
+    const history = useHistory();
     const [search, setSearch] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
-
+        // query for coffee based on name
+        // go to products page
+        history.push("/products")
     }
     return (
         <>
@@ -53,8 +56,11 @@ function FrontPage() {
                 </div>
             </div>
             <footer>
-                <div>Github</div>
-                <div>LinkedIn</div>
+                <div>
+                    <a href="https://github.com/jh9374">
+                        Github</a></div>
+                <div>
+                    <a href="https://www.linkedin.com/in/jchc">LinkedIn</a></div>
             </footer>
         </>
     )

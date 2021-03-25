@@ -1,10 +1,23 @@
 import React from 'react';
+import { useSelector } from "react-redux";
+import ProductCard from '../ProductCard/ProductCard';
 
-function ProductPage(){
-    return(
-        <div className="product__page">
-            <div className="products__container">
-                <h2>Product</h2>
+import "./ProductPage.css"
+
+function ProductPage() {
+    const products = useSelector((x) => x.products)
+    return (
+        <div className="page_containerP">
+            <div className="product__page">
+
+
+
+                <div className="products__heading">
+                    <h1>Products</h1>
+                </div>
+                <div className="products__container">
+                    <ProductCard />
+                </div>
             </div>
         </div>
     )

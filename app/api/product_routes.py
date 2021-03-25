@@ -95,8 +95,8 @@ def get_products():
 
     query_results = Product.query.all()
     products = {}
-    for num, prod in enumerate(query_results, start=1):
-        products[num] = prod.to_dict()
+    for prod in query_results:
+        products[prod.id] = prod.to_dict()
     return products, 200
 
 # ****************************** Get Single Product **********************************

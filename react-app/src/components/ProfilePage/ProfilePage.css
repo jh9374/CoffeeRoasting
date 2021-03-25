@@ -8,10 +8,9 @@
   border-radius: 40%;
   width: 3em;
   height: 3em;
-  position: absolute;
-  top: 40vh;
-  left: 56vw;
-  translate: 40vh 56vw;
+  position: relative;
+  top: -3.3em;
+  left: 13em;
 }
 
 .editProfile__button:hover {
@@ -56,7 +55,6 @@
   /* border-radius: 2em; */
 }
 
-.user__reviews > div,
 .user__likes > div {
   display: flex;
   justify-content: space-evenly;

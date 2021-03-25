@@ -15,6 +15,7 @@ import { authenticate } from "./services/auth";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import ProductPage from "./components/ProductPage/ProductPage";
 import RoasterProfilePage from "./components/RoasterProfilePage/RoasterProfilePage";
+import { getProducts } from "./store/reducers/product";
 
 function App() {
 
@@ -24,12 +25,14 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    
     (async() => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
         dispatch(setSessionUser(user));
       }
+      dispatch(getProducts())
       setLoaded(true);
     })();
   },[dispatch]);
@@ -51,7 +54,7 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/profile/:username" exact={true}>
+        <Route path="/profile/:id" exact={true}>
           <ProfilePage />
         </Route>
         <Route path="/roaster/:name" >

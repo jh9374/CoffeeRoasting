@@ -1,0 +1,8 @@
+.product__page{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.product__page h1{
+    font-size: 4em;
+}

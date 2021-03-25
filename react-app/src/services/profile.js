@@ -1,5 +1,5 @@
-export const getUserProfile = async(username) => {
-    const response = await fetch(`/api/profiles/${username}`,{
+export const getUserProfile = async(id) => {
+    const response = await fetch(`/api/profiles/${id}`,{
     })
     return await response.json();
 }
@@ -28,4 +28,8 @@ export const updateProfile = (profileForm) => async (dispatch) => {
         body: form,
     })
     return res;
+}
+
+export const getUserReviews = () => {
+    
 }

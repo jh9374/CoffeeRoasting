@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./ProfileEditForm.css"
 import {updateProfile} from "../../services/profile"
 
-function ProfileEditForm({ fetchUserProfile, editImage, setEditImage}){
+function ProfileEditForm({ setToggleEditForm}){
 
     const dispatch = useDispatch();
 
@@ -49,7 +49,7 @@ function ProfileEditForm({ fetchUserProfile, editImage, setEditImage}){
             setCity("")
             setUSState("")
             setZipcode("")
-            setEditImage(false)
+            setToggleEditForm(false)
             
         })
     }
@@ -62,7 +62,7 @@ function ProfileEditForm({ fetchUserProfile, editImage, setEditImage}){
     return(
         <div className="profile-form__container">
             <div>
-                <button type="button" className="profile__form--close" onClick={() => setEditImage(false)}>X</button>
+                <button type="button" className="profile__form--close" onClick={() => setToggleEditForm(false)}>X</button>
             </div>
             <form className="profile__form" onSubmit={submit}>
                 <div>
