@@ -7,6 +7,9 @@ roaster_routes = Blueprint("roaster", __name__)
 
 # ****************************** Create, Update, Delete Roaster ********************************
 
+# GET, POST /api/roasters/
+# /api/roasters?name=starbucks
+
 @roaster_routes.route("/", methods=["POST","PATCH","DELETE"])
 @login_required
 def create_roaster():
@@ -58,7 +61,7 @@ def create_roaster():
         return {"error": "You already have a roaster"}, 409
 
 # ****************************** Get Roaster: Name *****************************
-
+# GET /api/roasters/<int:roaster_id>
 @roaster_routes.route("/<string:name>")
 def get_roaster_by_name(name):
 

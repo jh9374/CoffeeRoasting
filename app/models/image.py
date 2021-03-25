@@ -7,7 +7,7 @@ class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     type_id = db.Column(db.Integer, nullable=False)
-    type = db.Column(db.Enum('review', 'roast', 'product', name="image_types"), nullable=False)
+    type = db.Column(db.Enum('review', 'roaster', 'product', name="image_types"), nullable=False)
     image_url = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now())
