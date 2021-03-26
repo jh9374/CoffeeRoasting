@@ -32,7 +32,7 @@ function ReviewForm({productId, setReload}){
     }
 
     return (
-        <div className="review__card">
+        <div className="review__card new__review">
             <div className="review__heading">
                 <h2>Add a review</h2>
             </div>

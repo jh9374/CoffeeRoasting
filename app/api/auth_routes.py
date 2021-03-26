@@ -30,6 +30,7 @@ def authenticate():
         user = current_user.to_dict()
         if roaster is not None:
             user.update({"roaster": "true"})
+            user.update({"roaster_id": roaster.id})
             return user, 200
         else:
             user.update({"roaster": "false"})

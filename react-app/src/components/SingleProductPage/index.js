@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { getProducts } from '../../store/reducers/product';
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -88,12 +88,14 @@ function SingleProductPage() {
                                             return <li key={f}>{f}</li>
                                         })
                                     }
-
                                 </ul>
                             </div>
                             <div className="product__details">
                                 <button className="add-to-cart__button" type="button" onClick={(e) => addToCart(e)}>Add to Cart</button>
                             </div>
+                        </div>
+                        <div>
+                            <h2>Checkout the <Link to={`/Roasters/${product.roaster_id}`} >Roaster</Link></h2>
                         </div>
 
                     </div>

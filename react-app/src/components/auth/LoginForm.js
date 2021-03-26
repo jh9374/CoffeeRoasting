@@ -69,6 +69,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       </div>
       <div className="form-login__submit">
         <button type="submit">Login</button>
+        <button type="submit" onClick={() => { setEmail('demo@aa.io'); setPassword('6oW8PFhFSr@&')}}>Demo</button>
       </div>
       <div className="form-login__signup" style={{ justifyContent: "center" }}>
           Don't have an account?

@@ -1,5 +1,5 @@
 .review__card{
-    margin: 1em;
+    margin: 1em auto;
     display: block;
     width: 40em;
     border: 1px solid #000;
@@ -50,4 +50,9 @@ datalist{
 .review__submit{
     display: flex;
     justify-content: center;
+}
+
+.new__review{
+    border-style: dashed;
+    
 }

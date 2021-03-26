@@ -59,10 +59,10 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/profile/:id" exact={true}>
+        <Route path="/profiles/:id" exact={true}>
           <ProfilePage />
         </Route>
-        <Route path="/roaster/:name" >
+        <Route path="/roasters/:id" >
           <RoasterProfilePage />
         </Route>
         <Route path="/" exact={true} >

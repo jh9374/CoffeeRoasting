@@ -10,9 +10,9 @@ function RoasterProfilePage() {
 
     const { name } = useParams()
 
-    useEffect(() => {
-        dispatch(getRoaster(name))
-    },[dispatch])
+    // useEffect(() => {
+    //     dispatch(getRoaster(name))
+    // },[dispatch])
 
     return (
         <>

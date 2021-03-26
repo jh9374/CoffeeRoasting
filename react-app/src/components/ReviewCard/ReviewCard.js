@@ -50,6 +50,8 @@ function ReviewCard({ review, setReload }) {
             <div className="review__card">
                 <div className="review__productName review__heading">
                     <h3>{products[review.product_id].name}</h3>
+                    </div>
+                    <div className="review__buttons">
                     {
                         user.id === review.user_id &&
                         (

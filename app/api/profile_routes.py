@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request
 from flask_login import login_required, current_user
-from app.models import db, User, Review
+from app.models import db, User, Review, Roaster
 from app.forms import ProfileForm, check_file
 from datetime import datetime
 
@@ -23,6 +23,7 @@ def update_profile_pic(id):
 
     # find user by id
     user = User.query.get(id)
+    
     
     # Make form and get csrf_token from request
     form = ProfileForm()
@@ -67,6 +68,7 @@ def get_profile(id):
     
     user = User.query.filter(User.id == id).first()
     reviews_query = Review.query.filter(Review.user_id == id).all()
+    roaster = Roaster.query.filter(Roaster.user_id == id).first()
 
     reviews = {}
     if user:
@@ -75,5 +77,8 @@ def get_profile(id):
             for num, r in enumerate(reviews_query, start=1):
                 reviews[num] = r.to_dict()
             user.update({"reviews":reviews})
+        if roaster is not None:
+            user.update({"roaster": "true"})
+            user.update({"roaster_id": roaster.id})
         return user
     return {'errors': ["No such user"]}, 404

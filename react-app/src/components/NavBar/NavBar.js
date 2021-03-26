@@ -44,7 +44,7 @@ const NavBar = ({ setAuthenticated }) => {
             <span className="navbar__username">
               Welcome {user.username}
             </span>
-            <NavLink to={`/profile/${user.id}`} exact={true} activeClassName="active">
+            <NavLink to={`/profiles/${user.id}`} exact={true} activeClassName="active">
                 Profile
             </NavLink>
           <NavLink to="/cart" exact={true} activeClassName="active"
