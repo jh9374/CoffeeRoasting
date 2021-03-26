@@ -7,7 +7,7 @@ import toast_color from "../../images/toast_color.png";
 import coffeeRoasting from "../../images/coffeeRoasting.png"
 
 function ReviewCard({ review, setReload }) {
-    console.log(review)
+
     const products = useSelector((x) => x.products)
     const user = useSelector((x) => x.session.user)
 
@@ -48,7 +48,7 @@ function ReviewCard({ review, setReload }) {
 
         return (
             <div className="review__card">
-                <div className="review__productName">
+                <div className="review__productName review__heading">
                     <h3>{products[review.product_id].name}</h3>
                     {
                         user.id === review.user_id &&
@@ -105,7 +105,7 @@ function ReviewCard({ review, setReload }) {
 
 
                                     </div>
-                                    <div>
+                                    <div className="review__submit">
                                         <button type="submit">Submit</button>
                                     </div>
                                 </form>

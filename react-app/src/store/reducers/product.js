@@ -44,7 +44,7 @@ export const getProduct= ({ id }) => async (dispatch) => {
 export const getProducts= () => async (dispatch) => {
     let res = await fetch(`/api/products`)
     res = await res.json()
-    dispatch(getProductAction(res));
+    await dispatch(getProductAction(res));
     return res;
 }
 

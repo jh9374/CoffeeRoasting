@@ -79,4 +79,13 @@ def get_roaster_images(id):
     for num, image in enumerate(query_results, start=1):
         images[num] = image.to_dict()
     return images, 200
+
+@image_routes.route("/images")
+def get_images():
+
+    query_results = Image.query.all()
+    images = {}
+    for image in query_results:
+        images[image.id] = image.to_dict()
+    return images, 200
     

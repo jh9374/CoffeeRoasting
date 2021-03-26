@@ -1,0 +1,28 @@
+.product__page{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.product__section, .product__reviews{
+    padding: 1em;
+    width: 45vw;
+}
+.product-carousel__images, .product__information{
+    width: 40vw;
+    /* height: 20em; */
+}
+.product-carousel__images img{
+    width: 40em;
+    /* height: 20em; */
+}
+
+.carousel__images img{
+    width: 40em;
+}
+
+.no-reviews__div{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+}

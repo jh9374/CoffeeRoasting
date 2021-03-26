@@ -1,0 +1,20 @@
+.products__page{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.product__page h1{
+    font-size: 4rem;
+    text-align: center;
+}
+
+.products__container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.products__heading img{
+    width: 100%;
+    /* height: 20em; */
+}

@@ -13,9 +13,12 @@ import { useDispatch } from "react-redux";
 // Services
 import { authenticate } from "./services/auth";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
-import ProductPage from "./components/ProductPage/ProductPage";
+import ProductsPage from "./components/ProductsPage/ProductsPage";
 import RoasterProfilePage from "./components/RoasterProfilePage/RoasterProfilePage";
 import { getProducts } from "./store/reducers/product";
+import { getImages } from "./store/reducers/images";
+import { getRoasters } from "./store/reducers/roasters";
+import SingleProductPage from "./components/SingleProductPage";
 
 function App() {
 
@@ -25,17 +28,19 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    
-    (async() => {
+
+    (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
         dispatch(setSessionUser(user));
       }
       dispatch(getProducts())
+      dispatch(getImages())
+      dispatch(getRoasters())
       setLoaded(true);
     })();
-  },[dispatch]);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -64,7 +69,10 @@ function App() {
           <FrontPage />
         </Route>
         <Route path="/products" exact={true} >
-          <ProductPage/>
+          <ProductsPage />
+        </Route>
+        <Route path="/products/:id" exact={true} >
+          <SingleProductPage />
         </Route>
         <Route path="/404" exact={true}>
           <h2>Not Found</h2>

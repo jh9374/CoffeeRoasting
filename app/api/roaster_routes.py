@@ -73,6 +73,21 @@ def get_roaster_by_name(name):
     
     return roaster.to_dict()
 
+# ****************************** Get All Roasters *****************************
+# GET /api/roasters/<int:roaster_id>
+@roaster_routes.route("")
+def get_roasters():
+
+    query_results = Roaster.query.all()
+    roasters = {}
+    # if roaster is None:
+    #     # Send error message
+    #     return {"error": "no roaster exists"}, 404
+    for roaster in query_results:
+        roasters[roaster.id] = roaster.to_dict()
+    
+    return roasters, 200
+
 # ****************************** Get Roaster: user_id **************************
 
 @roaster_routes.route("/<int:user_id>")

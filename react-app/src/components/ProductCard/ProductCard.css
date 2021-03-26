@@ -1,0 +1,77 @@
+.product__card img{
+    width: 15em;
+    height: 15em;
+}
+
+.product__card{
+    border: 2px solid rgb(204,204, 204);
+    border-radius: 15px;
+    /* background-color: #a09696; */
+    background-color: #fff;
+    color: #000;
+    font-size: 1.2rem;
+    margin: 1em;
+    width: 25em;
+    height: 27em;
+    padding: 1em;
+}
+
+.product__card:hover{
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(204,204, 204, .5), 0 10px 10px;
+}
+
+.product__title{
+    background-color: rgb(170, 124, 55);
+    height: 1.5em;
+    color: #fff;
+}
+
+.product__details{
+    margin: 1em auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product__description h2, p{
+    text-align: center;
+    margin: auto;
+}
+
+.product__flavours{
+    margin: .5em auto;
+    width: 100%;
+    height: 1em;
+    display: flex;
+}
+
+.product__flavours h2{
+    width: fit-content;
+}
+
+.product__flavours li{
+    width: fit-content;
+    display: inline-block;
+    margin: 0 .2em;
+    padding: .1em .4em;
+    border: 1px solid brown;
+    color: brown;
+    border-radius: 15px;
+}
+
+.add-to-cart__button, .review__submit button{
+    margin: .5em auto;
+    border: none;
+    font-size: 1em;
+    background-color: #fff;
+    border-radius: 7px;
+    font-weight: bold;
+    color: rgb(14, 75, 90);
+    border: 2px solid #000;
+}
+
+.add-to-cart__button:hover, .review__submit button:hover{
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}

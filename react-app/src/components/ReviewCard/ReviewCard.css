@@ -40,3 +40,14 @@ datalist{
     justify-content: space-between;
     /* transform:rotate(80deg); */
 }
+
+.review__heading{
+    margin: .3em auto;
+    display: flex;
+    justify-content: center;
+}
+
+.review__submit{
+    display: flex;
+    justify-content: center;
+}
