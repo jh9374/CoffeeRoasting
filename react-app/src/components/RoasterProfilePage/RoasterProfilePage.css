@@ -1,7 +1,14 @@
-.profile__card, .products__section{
+.profile__card{
     display: flex;
-    margin: 1em auto;
-    width: 20em;
+    justify-content: center;
+    padding: 1em auto;
+    height: 2em;
+    font-size: 4em;
+    background-color: burlywood;
+}
+
+.profile__card h1{
+    margin: .5em auto;
 }
 
 .profile__card *{
@@ -11,4 +18,12 @@
 
 .products__section *{
     margin: 0 auto;
+}
+.roaster__profile{
+  margin: 1em auto;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  padding: 1em;
+  border: 1px solid #000;
 }

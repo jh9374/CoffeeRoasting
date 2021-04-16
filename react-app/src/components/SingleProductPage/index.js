@@ -95,7 +95,7 @@ function SingleProductPage() {
                             </div>
                         </div>
                         <div>
-                            <h2>Checkout the <Link to={`/Roasters/${product.roaster_id}`} >Roaster</Link></h2>
+                            <h2>Checkout the <Link to={`/roasters/${product.roaster_id}`} >Roaster</Link></h2>
                         </div>
 
                     </div>

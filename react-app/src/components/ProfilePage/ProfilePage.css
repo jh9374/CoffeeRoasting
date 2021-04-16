@@ -41,6 +41,7 @@
 
 .profile__image img {
   width: 12em;
+  height: 12em;
   background-color: #e0e0e0;
   border-radius: 50%;
 }

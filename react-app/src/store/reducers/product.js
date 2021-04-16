@@ -23,18 +23,44 @@ const deleteProductAction = (payload) => ({
     payload
 });
 // Thunks
-export const createProduct = ({ name }) => async (dispatch) => {
+export const createProduct = (data) => async (dispatch) => {
     const form = new FormData();
-    form.append('name', name);
+    form.append("name",data.name);
+    form.append("description",data.description);
+    form.append("price",data.price);
+    form.append("sweetness",data.sweetness);
+    form.append("acidity",data.acidity);
+    form.append("mouthfeel",data.mouthfeel);
+    form.append("flavour-1",data.flavour1);
+    form.append("flavour-2",data.flavour2);
+    form.append("flavour-3",data.flavour3);
+    form.append("flavour-4",data.flavour4);
+
+    const files = data.files;
 
     const res = await fetch(`/api/products`, {
         method: "POST",
         body: form
     })
 
-    dispatch(createProductAction(name));
+    let response = await res.json();
+    console.log("response debugging",response)
+    if ( files) {
+        const form1 = new FormData();
+        form1.append("files", files)
+        form1.append("type_id",response.id)
+        form1.append("type", "product")
+        const res1 = await fetch(`/api/images`, {
+            method: "POST",
+            body: form1
+        })
+        const res2 = await res1
+        console.log(res2);
+    }
 
-    return res.json();
+    // dispatch(createProductAction(name));
+
+    return response;
 }
 export const getProduct= ({ id }) => async (dispatch) => {
     const res = await fetch(`/api/products/${id}`)

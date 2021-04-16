@@ -27,13 +27,17 @@ def upload_images():
             image.type_id=request.form.get("type_id")
             image.type=request.form.get("type")
             file_url = upload_file_to_s3(file, Config.S3_BUCKET)
+            print(file_url)
             image.image_url = file_url
             db.session.add(image)
             db.session.commit()
             images[idx] = image.to_dict()
             idx += 1
             
-    return images, 201
+        return images, 201
+    else:
+        return {"errors":"no files"}, 400
+    
 
 @image_routes.route("/images/<int:id>", methods=["DELETE"])
 @login_required

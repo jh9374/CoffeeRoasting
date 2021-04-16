@@ -8,7 +8,7 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import "./ProductCard.css"
 import { useHistory } from "react-router-dom";
 
-function ProductCard({ product }) {
+function ProductCard({ profile, product }) {
     // const images = useSelector((x) => x.images)
     const roasters = useSelector((x) => x.roasters)
     const user = useSelector((x) => x.session.user)
@@ -27,7 +27,6 @@ function ProductCard({ product }) {
 
     function addToCart(e){
         e.preventDefault();
-        console.log(user)
         if (!user.id){
             history.push("/login")
         }
@@ -79,9 +78,21 @@ function ProductCard({ product }) {
                             </ul>                        
                     </div>
                     </div>
-                    <div className="product__details">
-                        <button className="add-to-cart__button" type="button" onClick={(e) => addToCart(e)}>Add to Cart</button>
-                    </div>
+                    {
+                        profile ?
+                        (
+                                <div className="product__details">
+                                    <button className="add-to-cart__button" type="button" onClick={(e) => addToCart(e)}>Edit</button>
+                                </div>
+                        )
+                        :
+                        (
+                                    <div className = "product__details">
+                        <button className = "add-to-cart__button" type = "button" onClick = { (e) => addToCart(e) }>Add to Cart</button>
+                    </div >
+                        )
+                    }
+                    
                 </div>
             )
             :

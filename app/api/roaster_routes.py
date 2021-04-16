@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Roaster
+from app.models import db, Roaster, Product, Image
 from datetime import datetime
 
 roaster_routes = Blueprint("roaster", __name__)
@@ -91,13 +91,18 @@ def get_roasters():
 # ****************************** Get Roaster: user_id **************************
 
 @roaster_routes.route("/<int:user_id>")
-@login_required
 def get_roaster_by_id(user_id):
 
     roaster = Roaster.query.filter(Roaster.user_id == user_id).first()
-
+    
     if roaster is None:
         # Send error message
         return {"error": "no roaster exists"}, 404
-    
-    return roaster.to_dict()
+    roaster = roaster.to_dict()
+    product_query = Product.query.filter(Product.roaster_id == user_id).all()
+    products = {}
+    if len(product_query) > 0:
+        for prod in product_query:
+            products[prod.id] = prod.to_dict()
+    roaster.update({"products":products})
+    return roaster

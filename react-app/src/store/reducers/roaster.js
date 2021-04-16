@@ -35,8 +35,8 @@ export const createRoaster = ({name}) => async (dispatch) => {
 
     return res.json();
 }
-export const getRoaster = ({name}) => async (dispatch) => {
-    const res = await fetch(`/api/roaster/${name}`)
+export const getRoaster = ({id}) => async (dispatch) => {
+    const res = await fetch(`/api/roaster/${id}`)
     
     // dispatch(getRoasterProfileAction(name));
     return res.json();

@@ -62,7 +62,7 @@ function App() {
         <Route path="/profiles/:id" exact={true}>
           <ProfilePage />
         </Route>
-        <Route path="/roasters/:id" >
+        <Route path="/roasters/:id" exact={true}>
           <RoasterProfilePage />
         </Route>
         <Route path="/" exact={true} >
