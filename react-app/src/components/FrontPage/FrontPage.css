@@ -84,10 +84,23 @@ footer{
     display: flex; */
 }
 
-footer a{
-    color: #fff;
+.footer__icons {
     text-decoration: none;
+    color: #fff;
 }
+
 footer div{
-    margin: 2em auto;
+    margin: auto 0;
+}
+
+.svg-inline--fa {
+    height: 3em;
+}
+
+.svg-inline--fa.fa-w-16 {
+    width: 3em;
+}
+
+.svg-inline--fa.fa-w-14 {
+    width: 3em;
 }
