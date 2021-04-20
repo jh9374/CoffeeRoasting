@@ -5,3 +5,7 @@
 .form-signup__input label{
     width: 9em;
 }
+
+.login__page, .signup__page {
+    height: 85vh;
+}

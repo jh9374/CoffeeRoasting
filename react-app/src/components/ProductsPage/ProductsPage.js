@@ -24,7 +24,7 @@ function ProductsPage() {
     },[dispatch])
     return (
         !isLoading &&
-        (<div className="page_containerP">
+        (
             <div className="products__page">
                 <div className="products__heading">
                     <img src={banner} alt="banner"/>
@@ -38,7 +38,6 @@ function ProductsPage() {
                     
                 </div>
             </div>
-        </div>
         )
     )
 }

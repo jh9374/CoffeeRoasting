@@ -1,7 +1,9 @@
 .product__page{
     width: 80%;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
+    padding-top: 2em;
 }
 
 .product__section, .product__reviews{

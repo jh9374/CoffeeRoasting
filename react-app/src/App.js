@@ -8,7 +8,7 @@ import FrontPage from "./components/FrontPage/FrontPage"
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar.js";
-import SingleProductPage from "./components/SingleProductPage";
+import SingleProductPage from "./components/SingleProductPage/SingleProductPage";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import ProfilePage from "./components/ProfilePage/ProfilePage";
@@ -52,6 +52,9 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
+      <div className="page__container" >
+
+      
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -81,6 +84,7 @@ function App() {
           <h2>Not Found</h2>
         </Route>
       </Switch>
+      </div>
       <footer>
         <div>
           <a className="footer__icons" href="https://github.com/jh9374">

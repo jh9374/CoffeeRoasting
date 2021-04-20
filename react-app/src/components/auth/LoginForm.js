@@ -38,44 +38,46 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form className="form-login" onSubmit={onLogin}>
-      <div className="form-login__heading">
-        <h2>Login</h2>
-      </div>
-      <div style={errors.length > 0 ? { display: "block" } : { display: "none" }}>
-        {errors.map((error) => (
-          <div key={error} className="form-login__errors" style={{margin:"auto",padding:"0"}}>{error}</div>
-        ))}
-      </div>
-      <div className="form-login__input">
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div className="form-login__input">
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-      </div>
-      <div className="form-login__submit">
-        <button type="submit">Login</button>
-        <button type="submit" onClick={() => { setEmail('demo@aa.io'); setPassword('6oW8PFhFSr@&')}}>Demo</button>
-      </div>
-      <div className="form-login__signup" style={{ justifyContent: "center" }}>
+    <div className="login__page">
+      <form className="form-login" onSubmit={onLogin}>
+        <div className="form-login__heading">
+          <h2>Login</h2>
+        </div>
+        <div style={errors.length > 0 ? { display: "block" } : { display: "none" }}>
+          {errors.map((error) => (
+            <div key={error} className="form-login__errors" style={{ margin: "auto", padding: "0" }}>{error}</div>
+          ))}
+        </div>
+        <div className="form-login__input">
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={updateEmail}
+          />
+        </div>
+        <div className="form-login__input">
+          <label htmlFor="password">Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={updatePassword}
+          />
+        </div>
+        <div className="form-login__submit">
+          <button type="submit">Login</button>
+          <button type="submit" onClick={() => { setEmail('demo@aa.io'); setPassword('6oW8PFhFSr@&') }}>Demo</button>
+        </div>
+        <div className="form-login__signup" style={{ justifyContent: "center" }}>
           Don't have an account?
           <NavLink to="/sign-up">Sign Up</NavLink>
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
   );
 };
 

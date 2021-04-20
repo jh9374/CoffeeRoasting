@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createProduct } from "../../store/reducers/product"
+import "./CreateProductForm.css"
 
 function CreateProductForm({ setReload }) {
     const dispatch = useDispatch();
@@ -42,23 +43,23 @@ function CreateProductForm({ setReload }) {
     return (
         <form onSubmit={submit}>
             <div className="create-product__container">
-                <div className="product__card" >
+                <div className="product__card product__form" >
                     <div className="product-details__container" >
-                        <div className="product__details product__description">
-                            <label>Images</label>
-                            <input onChange={(e) => addImage(e.target.value)} type="file" multiple></input>
+                        <div className="product__details product__description product-form__div">
+                            <label className="product-details__label">Images</label>
+                            <input className="product-details__input" onChange={(e) => addImage(e.target.value)} type="file" multiple></input>
                         </div>
-                        <div className="product__details product__description">
-                            <label>Coffee Name</label>
-                            <input onChange={(e) => setCoffeeName(e.target.value)} type="text"></input>
+                        <div className="product__details product__description product-form__div">
+                            <label className="product-details__label">Coffee Name</label>
+                            <input className="product-details__input" onChange={(e) => setCoffeeName(e.target.value)} type="text"></input>
                         </div>
-                        <div className="product__details product__description">
-                            <label>Description</label>
-                            <textarea onChange={(e) => setDescription(e.target.value)}></textarea>
+                        <div className="product__details product__description product-form__div">
+                            <label className="product-details__label">Description</label>
+                            <textarea className="product-details__textarea" onChange={(e) => setDescription(e.target.value)}></textarea>
                         </div>
-                        <div className="product__details product__description">
-                            <label>Price</label>
-                            <input onChange={(e) => setPrice(e.target.value)} type="number"></input>
+                        <div className="product__details product__description product-form__div">
+                            <label className="product-details__label">Price</label>
+                            <input className="product-details__input" onChange={(e) => setPrice(e.target.value)} type="number"></input>
 
                         </div>
                         <div className="roastRating-input__container">
@@ -130,19 +131,19 @@ function CreateProductForm({ setReload }) {
                                 <option value="10" label="10"></option>
                             </datalist>
                         </div>
-                        <div className="product__details">
-                            <label>Flavour 1: </label>
-                            <input onChange={(e) => setFlavour1(e.target.value)} type="text"></input>
-                            <label>Flavour 2: </label>
-                            <input onChange={(e) => setFlavour2(e.target.value)} type="text"></input>
+                        <div className="product__details product-form__div">
+                            <label className="product-flavor__label">Flavour 1: </label>
+                            <input className="product-flavor__input" onChange={(e) => setFlavour1(e.target.value)} type="text"></input>
+                            <label className="product-flavor__label">Flavour 2: </label>
+                            <input className="product-flavor__input" onChange={(e) => setFlavour2(e.target.value)} type="text"></input>
                         </div>
-                        <div className="product__details">
-                            <label>Flavour 3: </label>
-                            <input onChange={(e) => setFlavour3(e.target.value)} type="text"></input>
-                            <label>Flavour 4: </label>
-                            <input onChange={(e) => setFlavour4(e.target.value)} type="text"></input>
+                        <div className="product__details product-form__div">
+                            <label className="product-flavor__label">Flavour 3: </label>
+                            <input className="product-flavor__input" onChange={(e) => setFlavour3(e.target.value)} type="text"></input>
+                            <label className="product-flavor__label">Flavour 4: </label>
+                            <input className="product-flavor__input" onChange={(e) => setFlavour4(e.target.value)} type="text"></input>
                         </div>
-                        <div className="review__submit">
+                        <div className="product__submit review__submit">
                             <button type="submit">Submit</button>
                         </div>
                     </div>

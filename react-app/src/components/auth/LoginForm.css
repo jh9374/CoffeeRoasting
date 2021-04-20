@@ -13,7 +13,7 @@
     width: 90%;
     height: fit-content;
     display: flex;
-    margin: .5em auto;
+    margin: .1em auto;
     padding: .5em 0;
     justify-content: space-between;
 }

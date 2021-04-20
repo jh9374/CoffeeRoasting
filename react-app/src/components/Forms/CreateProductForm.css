@@ -1,0 +1,28 @@
+.product-form__div{
+    margin: .4em auto;
+}
+
+.product-flavor__label{
+    display: flex;
+    align-items: center;
+}
+
+.product-flavor__input {
+    width: 8em;
+    height: 1.5em;
+}
+
+.product-details__input {
+    width: 20em;
+    height: 1.5em;
+}
+
+.product-details__label {
+    display: flex;
+    align-items: center;
+}
+
+.product-details__textarea {
+    width: 20em;
+    height: 2em;
+}

@@ -6,7 +6,7 @@ import { setSessionUser } from "../../store/reducers/session";
 
 import "./SignUpForm.css"
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,7 +25,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       setAuthenticated(true);
       dispatch(setSessionUser(user))
       history.push(`/profiles/${user.id}`)
-    } else{
+    } else {
       setErrors(user.errors)
     }
   };
@@ -51,60 +51,62 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <form className="form-signup" onSubmit={onSignUp}>
-      <div className="form-signup__heading">
-        <h2>Sign Up</h2>
-      </div>
-      <div style={errors.length > 0 ? { display: "block" } : { display: "none" }}>
-        {errors.map((error) => (
-          <div key={error} className="form-login__errors" style={{ margin: "auto", padding: "0" }}>{error}</div>
-        ))}
-      </div>
-      <div className="form-signup__input">
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div className="form-signup__input">
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div className="form-signup__input">
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div className="form-signup__input">
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <div className="form-signup__submit">
-        <button type="submit">Sign Up</button>
-      </div>
-      <div className="form-signup__login" style={{justifyContent:"center"}}>
-        Already have an account?
+    <div className="signup__page">
+      <form className="form-signup" onSubmit={onSignUp}>
+        <div className="form-signup__heading">
+          <h2>Sign Up</h2>
+        </div>
+        <div style={errors.length > 0 ? { display: "block" } : { display: "none" }}>
+          {errors.map((error) => (
+            <div key={error} className="form-login__errors" style={{ margin: "auto", padding: "0" }}>{error}</div>
+          ))}
+        </div>
+        <div className="form-signup__input">
+          <label>User Name</label>
+          <input
+            type="text"
+            name="username"
+            onChange={updateUsername}
+            value={username}
+          ></input>
+        </div>
+        <div className="form-signup__input">
+          <label>Email</label>
+          <input
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div className="form-signup__input">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div className="form-signup__input">
+          <label>Repeat Password</label>
+          <input
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <div className="form-signup__submit">
+          <button type="submit">Sign Up</button>
+        </div>
+        <div className="form-signup__login" style={{ justifyContent: "center" }}>
+          Already have an account?
           <NavLink to="/login">Login</NavLink>
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
   );
 };
 
