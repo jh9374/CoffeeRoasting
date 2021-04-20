@@ -39,7 +39,7 @@ function ProductCard({ profile, product }) {
                     <div className="product-details__container" onClick={() => history.push(`/products/${product.id}`)}>
 
                     
-                    <div>
+                    <div className="product-images__container">
                         {
                             <Carousel >
 
