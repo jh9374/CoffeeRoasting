@@ -7,18 +7,10 @@ import "./FrontPage.css"
 // Images
 import toast_color from "../../images/toast_color.png";
 import coffeeRoasting from "../../images/coffeeRoasting.png"
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function FrontPage() {
-    const history = useHistory();
-    const [search, setSearch] = useState('');
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        // query for coffee based on name
-        // go to products page
-        history.push("/products")
-    }
     return (
         <>
             <div className="frontpage">
@@ -27,27 +19,7 @@ function FrontPage() {
                         Ready to "Roast" or "Toast"?
                 </div>
                 <div className="search__wrapper">
-                    <form className="search__form" onSubmit={handleSubmit}>
-                        <div className="search-text__wrapper">
-                            <h2 className="search__text">
-                                Search for Coffee
-                            </h2>
-                        </div>
-                        <div className="input__wrapper">
-                            <input
-                                value={search}
-                                placeholder="Counter Culture"
-                                onChange={(e) => setSearch(e.target.value)}
-                                className="search__input">
-                            </input>
-                        </div>
-                        <div className="submit__wrapper">
-                            <button
-                                type="submit"
-                                className="search__button">
-                            </button>
-                        </div>
-                    </form>
+                    <NavLink to="/products">Look at coffee</NavLink>
                 </div>
                 </div>
                 <div className="frontpage__images">

@@ -24,7 +24,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     if (!user.errors) {
       setAuthenticated(true);
       dispatch(setSessionUser(user))
-      history.push(`/profile/${user.id}`)
+      history.push(`/profiles/${user.id}`)
     } else{
       setErrors(user.errors)
     }

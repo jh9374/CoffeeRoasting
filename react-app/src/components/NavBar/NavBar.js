@@ -20,7 +20,7 @@ const NavBar = ({ setAuthenticated }) => {
     <div className="navbar">
       <nav className="navbar__nav">
         <div className="navbar__home home">
-          <NavLink className="home__link" to="/" exact={true} activeClassName="active">
+          <NavLink className="home__link" to={ user.id == null ? "/" : "/products"} exact={true} activeClassName="active">
             <div>
               <img className="home__image" src={homeIcon} alt="page logo" />
               <div className="home__text">
