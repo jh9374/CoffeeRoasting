@@ -27,7 +27,6 @@ def upload_images():
             image.type_id=request.form.get("type_id")
             image.type=request.form.get("type")
             file_url = upload_file_to_s3(file, Config.S3_BUCKET)
-            print(file_url)
             image.image_url = file_url
             db.session.add(image)
             db.session.commit()
@@ -92,4 +91,3 @@ def get_images():
     for image in query_results:
         images[image.id] = image.to_dict()
     return images, 200
-    
