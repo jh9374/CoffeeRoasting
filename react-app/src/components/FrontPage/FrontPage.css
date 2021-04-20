@@ -1,25 +1,64 @@
 .frontpage__banner{
+    display: grid;
+    grid-template: 1fr 1fr 1fr 7fr / .5fr 2fr .5fr;
+    grid-template-areas:
+            ". . ."
+            ". heading ."
+            ". text ."
+            ". button ."
+            ". . .";
     background-image: url("../../images/Coffee.png");
     background-size: cover;
     background-color:#fff;
     height: 50em;
-}
-
-.frontpage__text{
-    padding: 1em;
-    text-align: center;
-    font-size: 5em;
     color: #fff;
 }
 
-.frontpage__images{
+.frontpage__heading{
+    grid-area: heading;
+    font-size: 4em;
+    min-width: 13em;
+    color: #fff;
+}
+
+.frontpage__text{
+    text-align: left;
+    grid-area: text;
+    margin: auto 0;
+    font-size: 2.4em;
+    color: #fff;
+}
+
+.products__button{
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgb(232, 197, 71);
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5em;
+    text-align: center;
+    font-family: sans-serif;
+    width: 7em;
+    height: 1.5em;
+    padding: .2em .5em;
+}
+
+.products__button:hover {
+    background-color: rgb(117, 46, 21);
+    color: #fff;
+}
+
+.frontpage__cards{
     display: flex;
     width: 80%;
     margin: 0 auto;
     justify-content: space-between;
 }
 
-.frontpage__images img{
+.frontpage__cards img{
     width: 8em;
     margin: 1em 4em;
 }
@@ -39,42 +78,10 @@ footer{
     height: 10vh;
 }
 
-.search__form{
-    display: flex;
-}
-
-.search__form>div{
-    margin: auto .5em;
-}
-
-.search__form input{
-    width: 25em;
-    height: 3em;
-    border-radius: 2em;
-    padding: 0 1em;
-}
-.search__wrapper{
-    display: flex;
-    justify-content: space-evenly;
+.frontpage-button__wrapper{
     width: 50vw;
-    background-color: rgba(255, 255, 255, .5);
-    margin: 0 auto;
-    font-size: 2.5em;
-    border-radius: 50px;
-}
-
-.search__button{
-    background: url(../../images/search_icon.001.jpeg);
-    background-size: 2em;
-    background-repeat: no-repeat;
-    background-color: rgb(175, 86, 37);
-    background-position: center;
-    border-radius: 50%;
-    color: #ffffff;
-    font-size: 1em;
-    font-family: sans-serif;
-    width: 1.5em;
-    height: 1.5em;
+    /* margin: 0 0 0 11em;
+    display: flex; */
 }
 
 footer a{

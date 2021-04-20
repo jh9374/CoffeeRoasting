@@ -7,7 +7,7 @@ import "./FrontPage.css"
 // Images
 import toast_color from "../../images/toast_color.png";
 import coffeeRoasting from "../../images/coffeeRoasting.png"
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function FrontPage() {
 
@@ -15,17 +15,16 @@ function FrontPage() {
         <>
             <div className="frontpage">
                 <div className="frontpage__banner">
-                    <div className="frontpage__text">
+                    <h2 className="frontpage__heading">
                         Ready to "Roast" or "Toast"?
+                    </h2>
+                    <p className="frontpage__text">Find coffee roasters, review, and purchase</p>
+                    <NavLink to="/products" className="products__button">Start Roasting</NavLink>
                 </div>
-                <div className="search__wrapper">
-                    <NavLink to="/products">Look at coffee</NavLink>
-                </div>
-                </div>
-                <div className="frontpage__images">
+                {/* <div className="frontpage__cards">
                     <img className="roast__image" src={coffeeRoasting} alt="coffee roasting" />
                     <img className="toast__image" src={toast_color} alt="toast" />
-                </div>
+                </div> */}
             </div>
             <footer>
                 <div>
