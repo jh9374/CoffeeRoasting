@@ -22,8 +22,7 @@
 .roaster__profile{
   margin: 1em auto;
   width: 80%;
-  height: 100%;
+  min-height: 100vh;
   margin: auto;
   padding: 1em;
-  border: 1px solid #000;
 }

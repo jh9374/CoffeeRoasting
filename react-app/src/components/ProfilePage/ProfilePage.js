@@ -184,7 +184,7 @@ function ProfilePage() {
                                 (
                                     !register ?
                                         (
-                                            <div>
+                                            <div className="user__roastery">
                                                 <button className="roaster-register__button"
                                                     onClick={openForm}>Register as a Roaster?</button>
                                             </div>

@@ -47,7 +47,7 @@ function CreateProductForm({ setReload }) {
                     <div className="product-details__container" >
                         <div className="product__details product__description product-form__div">
                             <label className="product-details__label">Images</label>
-                            <input className="product-details__input" onChange={(e) => addImage(e.target.value)} type="file" multiple></input>
+                            <input className="product-details__input product-details__files" onChange={(e) => addImage(e.target.value)} type="file" multiple></input>
                         </div>
                         <div className="product__details product__description product-form__div">
                             <label className="product-details__label">Coffee Name</label>
