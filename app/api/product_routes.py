@@ -20,7 +20,7 @@ def create_product():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     flavours = []
-    for x in range(5):
+    for x in range(4):
         if request.form.get(f"flavour-{x}"):
             el = request.form.get(f"flavour-{x}")
             flavours.append(el)
@@ -39,7 +39,6 @@ def create_product():
             mouthfeel=form.data["mouthfeel"],
             flavour=flavours
         )
-        print(product.flavour)
         db.session.add(product)
         db.session.commit()
         return product.to_dict(), 201
@@ -62,7 +61,7 @@ def handle_product(id):
         form['csrf_token'].data = request.cookies['csrf_token']
 
         flavours = []
-        for x in range(5):
+        for x in range(1,4):
             if request.form.get(f"flavour-{x}"):
                 el = request.form.get(f"flavour-{x}")
                 flavours.append(el)

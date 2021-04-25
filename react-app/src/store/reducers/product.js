@@ -44,18 +44,21 @@ export const createProduct = (data) => async (dispatch) => {
     })
 
     let response = await res.json();
-    console.log("response debugging",response)
-    if ( files) {
+
+    if (files) {
         const form1 = new FormData();
-        form1.append("files", files)
+        for (let file in files){
+            form1.append("images", files[file])
+        }
         form1.append("type_id",response.id)
         form1.append("type", "product")
+
         const res1 = await fetch(`/api/images`, {
             method: "POST",
             body: form1
         })
         const res2 = await res1
-        console.log(res2);
+
     }
 
     // dispatch(createProductAction(name));

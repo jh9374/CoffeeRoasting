@@ -9,4 +9,4 @@ class ProductForm(FlaskForm):
     sweetness = IntegerField('sweetness', validators=[ DataRequired(message='sweetness is required')])
     acidity = IntegerField('acidity', validators=[ DataRequired(message='acidity is required')])
     mouthfeel = IntegerField('mouthfeel', validators=[ DataRequired(message='mouthfeel is required')])
-    flavour = FieldList(StringField('flavour', validators=[DataRequired(message='flavour is required')]), min_entries=2, max_entries=5)
+    flavour = FieldList(StringField('flavour', validators=[DataRequired(message='flavour is required')]), min_entries=2, max_entries=3)

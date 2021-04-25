@@ -5,20 +5,21 @@ import "./CreateProductForm.css"
 
 function CreateProductForm({ setReload }) {
     const dispatch = useDispatch();
-    const [images, setImages] = useState();
+    const [images, setImages] = useState([]);
     const [coffeeName, setCoffeeName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0);
-    const [sweetness, setSweetness] = useState(0)
-    const [acidity, setAcidity] = useState(0)
-    const [mouthfeel, setMouthfeel] = useState(0)
-    const [flavour1, setFlavour1] = useState(0)
-    const [flavour2, setFlavour2] = useState(0)
-    const [flavour3, setFlavour3] = useState(0)
-    const [flavour4, setFlavour4] = useState(0)
+    const [sweetness, setSweetness] = useState(10)
+    const [acidity, setAcidity] = useState(10)
+    const [mouthfeel, setMouthfeel] = useState(10)
+    const [flavour1, setFlavour1] = useState("")
+    const [flavour2, setFlavour2] = useState("")
+    const [flavour3, setFlavour3] = useState("")
+    const [flavour4, setFlavour4] = useState("")
 
-    function addImage(file) {
-        setImages(file)
+    async function addImage(e) {
+        const files = e.target.files
+        await setImages(files)
     }
 
     async function submit(e) {
@@ -36,22 +37,22 @@ function CreateProductForm({ setReload }) {
             "flavour3":flavour3,
             "flavour4":flavour4
         }
-        const res = await dispatch(createProduct(data))
-        console.log(res);
+
+        await dispatch(createProduct(data))
 
     }
     return (
-        <form onSubmit={submit}>
+        <form onSubmit={submit} >
             <div className="create-product__container">
                 <div className="product__card product__form" >
                     <div className="product-details__container" >
                         <div className="product__details product__description product-form__div">
                             <label className="product-details__label">Images</label>
-                            <input className="product-details__input product-details__files" onChange={(e) => addImage(e.target.value)} type="file" multiple></input>
+                            <input accept="image/png, image/jpeg, image/jpg" required className="product-details__input product-details__files" onChange={addImage} type="file" multiple></input>
                         </div>
                         <div className="product__details product__description product-form__div">
                             <label className="product-details__label">Coffee Name</label>
-                            <input className="product-details__input" onChange={(e) => setCoffeeName(e.target.value)} type="text"></input>
+                            <input required className="product-details__input" onChange={(e) => setCoffeeName(e.target.value)} type="text"></input>
                         </div>
                         <div className="product__details product__description product-form__div">
                             <label className="product-details__label">Description</label>
@@ -59,12 +60,12 @@ function CreateProductForm({ setReload }) {
                         </div>
                         <div className="product__details product__description product-form__div">
                             <label className="product-details__label">Price</label>
-                            <input className="product-details__input" onChange={(e) => setPrice(e.target.value)} type="number"></input>
+                            <input required className="product-details__input" onChange={(e) => setPrice(e.target.value)} type="number"></input>
 
                         </div>
                         <div className="roastRating-input__container">
                             <label>Sweetness: </label>
-                            <input onChange={(e) => setSweetness(e.target.value)}
+                            <input required onChange={(e) => setSweetness(e.target.value)}
                                 className="roastRating__input"
                                 type="range"
                                 min="0"
@@ -87,7 +88,7 @@ function CreateProductForm({ setReload }) {
                         </div>
                         <div className="roastRating-input__container">
                             <label>Acidity: </label>
-                            <input onChange={(e) => setAcidity(e.target.value)}
+                            <input required onChange={(e) => setAcidity(e.target.value)}
                                 className="roastRating__input"
                                 type="range"
                                 min="0"
@@ -110,7 +111,7 @@ function CreateProductForm({ setReload }) {
                         </div>
                         <div className="roastRating-input__container">
                             <label>Mouthfeel (light to heavy): </label>
-                            <input onChange={(e) => setMouthfeel(e.target.value)}
+                            <input required onChange={(e) => setMouthfeel(e.target.value)}
                                 className="roastRating__input"
                                 type="range"
                                 min="0"
