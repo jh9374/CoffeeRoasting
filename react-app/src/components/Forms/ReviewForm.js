@@ -25,9 +25,9 @@ function ReviewForm({productId, setReload}){
             
             
         }
-        setReviewInput("")
-        setRoastRatingInput(5)
-        setReload(true)
+        await setReviewInput("")
+        await setRoastRatingInput(5)
+        await setReload(true)
         
     }
 

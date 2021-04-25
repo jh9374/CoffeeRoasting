@@ -8,23 +8,23 @@ import banner from "../../images/coffeeshopbanner.png"
 
 function ProductsPage() {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const products = useSelector((x) => x.products)
 
-    const [isLoading, setIsLoading] = useState(true)
+    // const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
-        function products(){
-            dispatch(getProducts())
-            setIsLoading(false)
-        }
-        products();
+    // useEffect(() => {
+    //     async function products(){
+    //         await dispatch(getProducts())
+    //         await setIsLoading(false)
+    //     }
+    //     products();
         
-    },[dispatch])
+    // },[])
     return (
-        !isLoading &&
-        (
+        
+        
             <div className="products__page">
                 <div className="products__heading">
                     <img src={banner} alt="banner"/>
@@ -38,7 +38,7 @@ function ProductsPage() {
                     
                 </div>
             </div>
-        )
+        
     )
 }
 

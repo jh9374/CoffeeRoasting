@@ -72,7 +72,7 @@ def get_profile(id):
 
     reviews = {}
     if user:
-        user = user.to_dict()
+        user = user.profile_dict()
         if reviews_query:
             for num, r in enumerate(reviews_query, start=1):
                 reviews[num] = r.to_dict()

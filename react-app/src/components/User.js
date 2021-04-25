@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 
 function User() {
   const [user, setUser] = useState({});
-  // Notice we use useParams here instead of getting the params
-  // From props.
   const { userId }  = useParams();
 
   useEffect(() => {
@@ -14,7 +12,7 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
-      setUser(user);
+      await setUser(user);
     })();
   }, [userId]);
 

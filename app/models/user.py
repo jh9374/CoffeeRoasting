@@ -56,3 +56,12 @@ class User(db.Model, UserMixin):
       "created_at": self.created_at,
       "udpated_at": self.updated_at
     }
+  
+
+  def profile_dict(self):
+    return {
+        "id": self.id,
+        "username": self.username,
+        "profile_image_url": self.profile_image_url,
+        "bio": self.bio,
+    }

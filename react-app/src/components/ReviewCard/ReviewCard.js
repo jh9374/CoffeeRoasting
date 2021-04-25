@@ -19,7 +19,7 @@ function ReviewCard({ review, setReload }) {
         let res = window.confirm("Are you sure you want to delete?");
         if (res) {
             await deleteUserReview(id)
-            setReload(true)
+            await setReload(true)
         }
     }
 
@@ -36,16 +36,10 @@ function ReviewCard({ review, setReload }) {
         if (res.errors){
 
         }
-        setToggleEdit(false)
+        await setToggleEdit(false)
     }
 
-    // useEffect(() => {
-
-    // },[reload])
-
     if (products) {
-
-
         return (
             <div className="review__card">
                 <div className="review__productName review__heading">
@@ -158,7 +152,6 @@ function ReviewCard({ review, setReload }) {
                     }
                 </div>
             </div>
-
         )
     }
     return (

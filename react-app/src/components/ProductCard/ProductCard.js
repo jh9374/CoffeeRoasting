@@ -23,7 +23,7 @@ function ProductCard({ profile, product }) {
             await setProductImages(res);
         }
         getImages(product.id);
-    }, [product])
+    }, [])
 
     function addToCart(e) {
         e.preventDefault();

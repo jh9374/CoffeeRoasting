@@ -28,20 +28,21 @@ function SingleProductPage() {
 
     useEffect(() => {
         async function getImages(id) {
-            dispatch(getProducts())
-            const res = await getProductImages(id)
-            const res2 = await getProductReviews(id)
-            await setProductImages(res);
-            await setProductReviews(res2);
-            setIsLoading(false)
-            setReload(false)
+            const images = await getProductImages(id)
+            const reviews = await getProductReviews(id)
+            await setProductImages(images);
+            await setProductReviews(reviews);
+            await setIsLoading(false)
+            // await setReload(false)
         }
         getImages(id);
-    }, [id, reload, dispatch])
+        return async () => {
+            await setReload(false)
+        }
+    }, [reload, dispatch])
 
     function addToCart(e) {
         e.preventDefault();
-        console.log(user)
         if (!user.id) {
             history.push("/login")
         }

@@ -35,13 +35,13 @@ function App() {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
-        setAuthenticated(true);
+        await setAuthenticated(true);
         await dispatch(setSessionUser(user));
       }
       await dispatch(getProducts())
       await dispatch(getImages())
       await dispatch(getRoasters())
-      setLoaded(true);
+      await setLoaded(true);
     })();
   }, [dispatch]);
 

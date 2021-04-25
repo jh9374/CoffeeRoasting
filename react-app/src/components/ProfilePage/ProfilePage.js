@@ -36,8 +36,8 @@ function ProfilePage() {
         const fetchUserProfile = async () => {
             const res = await getUserProfile(id)
             if (!res.errors) {
-                setProfile(res)
-                setIsLoading(false)
+                await setProfile(res)
+                await setIsLoading(false)
             } else {
                 history.push("/404")
             }
@@ -45,9 +45,9 @@ function ProfilePage() {
         fetchUserProfile();
     }, [toggleEditForm, id, reload])
 
-    function openForm(e) {
+    async function openForm(e) {
         e.preventDefault();
-        setRegister(!register);
+        await setRegister(!register);
     }
 
     if (!isLoading) {
@@ -89,10 +89,10 @@ function ProfilePage() {
                                         <h2>Shipping Info</h2>
                                         <div>
                                             <div className="shipping__detail">
-                                                {profile.street_address}
+                                                {user.street_address}
                                             </div>
                                             <div className="shipping__detail">
-                                                {profile.city} {profile.state}, {profile.zipcode}
+                                                {user.city} {user.state}, {user.zipcode}
                                             </div>
                                         </div>
                                     </div>
