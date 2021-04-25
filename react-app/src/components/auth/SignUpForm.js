@@ -64,6 +64,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <div className="form-signup__input">
           <label>User Name</label>
           <input
+            placeholder="Username"
             type="text"
             name="username"
             onChange={updateUsername}
@@ -73,6 +74,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <div className="form-signup__input">
           <label>Email</label>
           <input
+            placeholder="Email"
             type="text"
             name="email"
             onChange={updateEmail}
@@ -82,6 +84,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <div className="form-signup__input">
           <label>Password</label>
           <input
+            placeholder="Password"
             type="password"
             name="password"
             onChange={updatePassword}
@@ -91,6 +94,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <div className="form-signup__input">
           <label>Repeat Password</label>
           <input
+            placeholder="Password"
             type="password"
             name="repeat_password"
             onChange={updateRepeatPassword}

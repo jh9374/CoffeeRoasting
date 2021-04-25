@@ -30,7 +30,7 @@
     font-weight: bold;
 }
 .form-login__input input, .form-signup__input input{
-    padding: 1em 1em;
+    /* padding: 1em 1em; */
     width: 50%;
     justify-self: flex-end;
 }
