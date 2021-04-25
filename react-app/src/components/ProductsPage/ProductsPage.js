@@ -31,9 +31,9 @@ function ProductsPage() {
                 </div>
                 <div className="products__container">
                     {
-                        Object.keys(products).map((p) => {
-                            return <ProductCard product={products[p]} key={p} />
-                        })
+                        Object.keys(products).map((p) => (
+                            <ProductCard product={products[p]} key={products[p].id} />
+                        ))
                     }
                     
                 </div>

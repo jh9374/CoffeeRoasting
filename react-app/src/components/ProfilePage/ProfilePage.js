@@ -137,9 +137,9 @@ function ProfilePage() {
                             (
                                 profile.reviews ?
                                     (
-                                        Object.keys(profile.reviews).map((r) => {
-                                            return <ReviewCard key={r} setReload={setReload} review={profile.reviews[r]} />
-                                        })
+                                        Object.keys(profile.reviews).map((r) => 
+                                            <ReviewCard key={r} setReload={setReload} review={profile.reviews[r]} />
+                                        )
 
                                     )
                                     :

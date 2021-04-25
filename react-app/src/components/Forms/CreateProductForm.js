@@ -39,7 +39,7 @@ function CreateProductForm({ setReload }) {
         }
 
         await dispatch(createProduct(data))
-
+        await setReload(true)
     }
     return (
         <form onSubmit={submit} >

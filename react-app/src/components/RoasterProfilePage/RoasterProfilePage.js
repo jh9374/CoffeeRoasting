@@ -25,6 +25,9 @@ function RoasterProfilePage() {
             await setIsLoading(false)
         }
         roasterProfile(id);
+        return async () => {
+            await setReload(false);
+        }
     },[reload , dispatch])
 
     return (

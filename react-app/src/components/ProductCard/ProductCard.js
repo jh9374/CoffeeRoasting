@@ -44,9 +44,9 @@ function ProductCard({ profile, product }) {
                             <Carousel >
 
                                 {
-                                    Object.keys(productImages).map((i) => {
-                                        return <img key={productImages[i].id} src={productImages[i].image_url} alt="product" />
-                                    })
+                                    Object.keys(productImages).map((i) => (
+                                        <img key={productImages[i].id} src={productImages[i].image_url} alt="product" />
+                                    ))
                                 }
 
                             </Carousel>
@@ -70,9 +70,9 @@ function ProductCard({ profile, product }) {
                         <h2>Flavours: </h2>
                             <ul>
                                 {
-                                    product.flavour.map((f) => {
-                                        return <li key={f}>{f}</li>
-                                    })
+                                    product.flavour.map((f, i) => (
+                                        <li key={i}>{f}</li>
+                                        ))
                                 }
 
                             </ul>                        
