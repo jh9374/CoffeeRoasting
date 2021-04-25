@@ -45,7 +45,7 @@ function RoasterProfilePage() {
                     }
                     {
                         user.id &&
-                        <CreateProductForm setReload={setReload} />
+                        <CreateProductForm reload={reload} setReload={setReload} />
                     }
 
                     

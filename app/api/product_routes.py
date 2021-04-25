@@ -20,7 +20,7 @@ def create_product():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     flavours = []
-    for x in range(4):
+    for x in range(1,5):
         if request.form.get(f"flavour-{x}"):
             el = request.form.get(f"flavour-{x}")
             flavours.append(el)

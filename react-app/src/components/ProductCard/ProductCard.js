@@ -25,9 +25,9 @@ function ProductCard({ profile, product }) {
         getImages(product.id);
     }, [product])
 
-    function addToCart(e){
+    function addToCart(e) {
         e.preventDefault();
-        if (!user.id){
+        if (!user.id) {
             history.push("/login")
         }
     }
@@ -37,62 +37,57 @@ function ProductCard({ profile, product }) {
             (
                 <div className="product__card" >
                     <div className="product-details__container" onClick={() => history.push(`/products/${product.id}`)}>
+                        <div className="product-images__container">
+                            {
+                                <Carousel >
 
-                    
-                    <div className="product-images__container">
-                        {
-                            <Carousel >
+                                    {
+                                        Object.keys(productImages).map((i) => (
+                                            <img key={productImages[i].id} src={productImages[i].image_url} alt="product" />
+                                        ))
+                                    }
 
-                                {
-                                    Object.keys(productImages).map((i) => (
-                                        <img key={productImages[i].id} src={productImages[i].image_url} alt="product" />
-                                    ))
-                                }
-
-                            </Carousel>
-                        }
-                    </div>
-                    <div className="product__details product__title product__description">
-                        <h2>{product.name} | {roasters[product.roaster_id].name} | ${product.price}</h2>
-                    </div>
-                    {/* <div className="product__details product__description">
-                        <h2>Price: ${product.price}</h2>
-                    </div> */}
-                    <div className="product__details product__description">
-                        <p>{product.description}</p>
-                    </div>
-                    <div className="product__details"> 
-                        <h2>Sweetness: {product.sweetness}</h2>
-                        <h2>Acidity: {product.acidity}</h2>
-                        <h2>Mouthfeel: {product.mouthfeel}</h2>
-                    </div>
-                    <div className="product__flavours">
-                        <h2>Flavours: </h2>
+                                </Carousel>
+                            }
+                        </div>
+                        <div className="product__details product__title product__description">
+                            <h2>{product.name} | {roasters[product.roaster_id].name} | ${product.price}</h2>
+                        </div>
+                        <div className="product__details product__description">
+                            <p>{product.description}</p>
+                        </div>
+                        <div className="product__details">
+                            <h2>Sweetness: {product.sweetness}</h2>
+                            <h2>Acidity: {product.acidity}</h2>
+                            <h2>Mouthfeel: {product.mouthfeel}</h2>
+                        </div>
+                        <div className="product__flavours">
+                            <h2>Flavours: </h2>
                             <ul>
                                 {
                                     product.flavour.map((f, i) => (
                                         <li key={i}>{f}</li>
-                                        ))
+                                    ))
                                 }
 
-                            </ul>                        
-                    </div>
+                            </ul>
+                        </div>
                     </div>
                     {
                         profile ?
-                        (
+                            (
                                 <div className="product__details">
                                     <button className="add-to-cart__button" type="button" onClick={(e) => addToCart(e)}>Edit</button>
                                 </div>
-                        )
-                        :
-                        (
-                                    <div className = "product__details">
-                        <button className = "add-to-cart__button" type = "button" onClick = { (e) => addToCart(e) }>Add to Cart</button>
-                    </div >
-                        )
+                            )
+                            :
+                            (
+                                <div className="product__details">
+                                    <button className="add-to-cart__button" type="button" onClick={(e) => addToCart(e)}>Add to Cart</button>
+                                </div >
+                            )
                     }
-                    
+
                 </div>
             )
             :
