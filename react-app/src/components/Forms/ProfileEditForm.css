@@ -1,29 +1,53 @@
 .profile-form__container{
     width: 30em;
-    height: 80%;
+    height: fit-content;
+    padding: 1em;
     position: fixed;
     display: block;
+    background-color: #000;
+    color: #fff;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -30%);
-    justify-content: center;
+    border-radius: 25px;
 }
 
 .profile__form{
-    border: 1px solid black;
-    border-radius: 1em;
-    background-color: rgb(180, 180, 180);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
 }
 
 .profile__form div {
-    display: block;
+    /* text-align: center; */
+}
+
+/* .profile__form input{
+    width: 80%;
     margin: 0 auto;
-    text-align: center;
+} */
+
+.profile__input *{
+    display: block;
+    width: 30em;
+    margin: 0 auto;
+}
+
+.profile__input textarea {
+    width: 30em;
+    height: 4em;
 }
 
 /* Buttons */
 .profile__form--close{
+    background: none;
+    border: none;
     width: 2em;
     height: 2em;
+    font-size: large;
     float: right;
+    color: #fff;
+    font-weight: bolder;
 }

@@ -4,8 +4,11 @@ import { createUserReview, deleteUserReview, updateUserReview } from "../../serv
 // Images
 import toast_color from "../../images/toast_color.png";
 import coffeeRoasting from "../../images/coffeeRoasting.png"
+import { useHistory } from "react-router";
 
 function ReviewForm({productId, setReload}){
+
+    const history = useHistory();
 
     const [reviewInput, setReviewInput] = useState();
     const [roastRatingInput, setRoastRatingInput] = useState(5)
@@ -14,17 +17,18 @@ function ReviewForm({productId, setReload}){
 
     async function createReview(e, id) {
         e.preventDefault();
+
+        if (!user.id) {
+            history.push("/login")
+            return
+        }
         const newReview = {
             "product_id": productId,
             "user_id": user.id,
             "content": reviewInput,
             "roast_rating": roastRatingInput
         }
-        const res = await createUserReview(newReview);
-        if (res.status == 200) {
-            
-            
-        }
+        await createUserReview(newReview);
         await setReviewInput("")
         await setRoastRatingInput(5)
         await setReload(true)
@@ -39,6 +43,7 @@ function ReviewForm({productId, setReload}){
             <form className="review__form" onSubmit={(e) => createReview(e, productId)}>
                 <div>
                     <textarea
+                        required
                         value={reviewInput}
                         placeholder="Begin writing here"
                         onChange={(e) => setReviewInput(e.target.value)}>
